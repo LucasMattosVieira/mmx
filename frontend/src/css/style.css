@@ -1,7 +1,9 @@
 body {
     width: 100%;
     margin: 0;
+    background-color: #fff;
 }
+/* header style vv */
 header {
     background-color: #f2f2f2;
     height: 240px;
@@ -44,4 +46,35 @@ img {
     position: relative;
     left: 50%;
     transform: translate(-50%) rotate(180deg);
+}
+/* main style vv */
+h2 {
+    font-family: 'GFS Didot', serif;
+    font-size: 24px;
+    font-weight: lighter;
+    margin-top: 64px;
+}
+main > div {
+    text-align: center;
+}
+input, button {
+    width: 320px;
+    height: 40px;
+    border: none;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 16;
+}
+input {
+    border-bottom: 3px solid #222;
+    margin-top: 12px;
+    color: #222;
+    padding: 0;
+}
+input:focus {
+    outline: none;
+}
+button {
+    background-color: #222;
+    color: #fff;
+    margin-top: 24px;
 }
