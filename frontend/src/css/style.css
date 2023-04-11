@@ -7,24 +7,27 @@ header {
     height: 240px;
 }
 #header_div {
-    width: 764px;
-    margin: 0 auto;
     text-align: center;
     display: block;
+    width: 764px;
+    margin: 0 auto;
 }
 #logo_div {
     height: 77px;
 }
 #logo {
     color: #222;
-    font-family: 'GFS Didot';
+    font-family: 'GFS Didot',serif;
     font-size: 59px;
+    font-weight: lighter;
     margin: 0 auto;
+    line-height: 1.2;
 }
 #sub_logo {
     color: #5a5a5a;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-size: 12px;
+    font-weight: lighter;
     margin: 0 auto;
 }
 img {
