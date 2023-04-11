@@ -1,0 +1,44 @@
+body {
+    width: 100%;
+    margin: 0;
+}
+header {
+    background-color: #f2f2f2;
+    height: 240px;
+}
+#header_div {
+    width: 764px;
+    margin: 0 auto;
+    text-align: center;
+    display: block;
+}
+#logo_div {
+    height: 77px;
+}
+#logo {
+    color: #222;
+    font-family: 'GFS Didot';
+    font-size: 59px;
+    margin: 0 auto;
+}
+#sub_logo {
+    color: #5a5a5a;
+    font-family: Montserrat;
+    font-size: 12px;
+    margin: 0 auto;
+}
+img {
+    width: 132px;
+    height: auto;
+}
+#logo_img2 {
+    position: relative;
+    left: -50%;
+    top: 14px;
+    transform: translate(50%);
+}
+#logo_img1 {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%) rotate(180deg);
+}
