@@ -9,6 +9,7 @@ body {
 header {
     background-color: #f2f2f2;
     height: 240px;
+    user-select: none;
 }
 
 #header_div {
@@ -106,6 +107,10 @@ nav > a{
     text-decoration: none;
     font-size: 12px;
     display: inline-block;
+}
+
+.current_page {
+    background-color: #ffffff1f;
 }
 
 footer{
