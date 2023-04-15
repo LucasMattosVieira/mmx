@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="../css/style.css">
         <link rel="stylesheet" 
         href="https://fonts.googleapis.com/css?family=Montserrat|GFS+Didot">
+        <script defer src="../js/script.js"></script>
     </head>
     <body>
         <nav>
@@ -25,7 +26,7 @@
             </div>
         </header>
         <main>
-            <div id="simple_filter" class="active_filter">
+            <div id="simple_filter">
                 <h2>Filtro</h2>
                 <button type="button" id="setAdvanced" class="filter_btn">SIMPLES</button>
 
@@ -38,7 +39,7 @@
                 </form>
             </div>
 
-            <div id="advanced_filter" class="hidden_filter">
+            <div id="advanced_filter">
                 <h2>Filtro</h2>
                 <button type="button" id="setSimple" class="filter_btn">AVANÇADO</button>
 
@@ -58,8 +59,8 @@
                         </select>
                     </div>
                     <div>
-                        <input type="text" name="min_price" id="min_price" placeholder="Preço mínimo">
-                        <input type="text" name="max_price" id="max_price" placeholder="Preço máximo">
+                        <input type="text" name="min_price" id="min_price" class="price" placeholder="Preço mínimo">
+                        <input type="text" name="max_price" id="max_price" class="price" placeholder="Preço máximo">
                     </div>
                     <button>Pesquisar</button>
                 </form>
