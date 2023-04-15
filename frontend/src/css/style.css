@@ -1,152 +1,148 @@
 body {
-    width: 100%;
-    margin: 0;
-    background-color: #fff;
-    font-family: Montserrat, sans-serif;;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #fff;
+  font-family: Montserrat, sans-serif;
+  padding-bottom: 3.75rem;
 }
 
 /* header style vv */
 header {
-    background-color: #f2f2f2;
-    height: 240px;
-    user-select: none;
+  background-color: #f2f2f2;
+  height: 240px;
+  user-select: none;
 }
 
 #header_div {
-    text-align: center;
-    display: block;
-    max-width: 764px;
-    margin: 0 auto;
+  text-align: center;
+  display: block;
+  max-width: 764px;
+  margin: 0 auto;
 }
 
 #logo_div {
-    height: 77px;
+  height: 77px;
 }
 
 #logo {
-    color: #222;
-    font-family: 'GFS Didot',serif;
-    font-size: 59px;
-    font-weight: lighter;
-    margin: 0 auto;
-    line-height: 1.2;
+  color: #222;
+  font-family: "GFS Didot", serif;
+  font-size: 59px;
+  font-weight: lighter;
+  margin: 0 auto;
+  line-height: 1.2;
 }
 
 #sub_logo {
-    color: #5a5a5a;
-    font-size: 12px;
-    font-weight: lighter;
-    margin: 0 auto;
+  color: #5a5a5a;
+  font-size: 12px;
+  font-weight: lighter;
+  margin: 0 auto;
 }
 
 img {
-    max-width: 132px;
-    width: 100%;
-    height: auto;
+  max-width: 132px;
+  width: 100%;
+  height: auto;
 }
 
 #logo_img1 {
-    position: relative;
-    left: 50%;
-    transform: translate(-50%) rotate(180deg);
+  position: relative;
+  left: 50%;
+  transform: translate(-50%) rotate(180deg);
 }
 
 #logo_img2 {
-    position: relative;
-    left: -50%;
-    top: 14px;
-    transform: translate(50%);
+  position: relative;
+  left: -50%;
+  top: 14px;
+  transform: translate(50%);
 }
 
 /* main style vv */
 h2 {
-    font-family: 'GFS Didot', serif;
-    font-size: 24px;
-    font-weight: lighter;
-    margin-top: 50px;
+  font-family: "GFS Didot", serif;
+  font-size: 24px;
+  font-weight: lighter;
+  margin-top: 50px;
 }
 
 main > div {
-    text-align: center;
+  text-align: center;
 }
 
-input, button, select {
-    width: 320px;
-    height: 40px;
-    border: none;
-    font-size: 16;
+input,
+button,
+select {
+  width: 320px;
+  height: 40px;
+  border: none;
+  font-size: 16;
 }
 
-input, select {
-    border-bottom: 3px solid #222;
-    margin-top: 12px;
-    color: #222;
-    padding: 0;
+input,
+select {
+  border-bottom: 3px solid #222;
+  margin-top: 12px;
+  color: #222;
+  padding: 0;
 }
 
 select {
-    background-color: transparent;
+  background-color: transparent;
 }
 
-input:focus, select:focus {
-    outline: none;
+input:focus,
+select:focus {
+  outline: none;
 }
 
 button {
-    background-color: #222;
-    color: #fff;
-    margin-top: 24px;
+  background-color: #222;
+  color: #fff;
+  margin-top: 24px;
 }
 
-nav{
-    width: 100%;
-    background: #222;
-    text-align: center;
+nav {
+  width: 100%;
+  background: #222;
+  text-align: center;
 }
 
-nav > a{
-    color: #fff;
-    padding: 22px;
-    white-space: nowrap;
-    text-decoration: none;
-    font-size: 12px;
-    display: inline-block;
+nav > a {
+  color: #fff;
+  padding: 22px;
+  white-space: nowrap;
+  text-decoration: none;
+  font-size: 12px;
+  display: inline-block;
 }
 
 .current_page {
-    background-color: #ffffff1f;
-}
-
-footer{
-    width: 100%;
-    margin-top: 292px;
-    background: #222;
-    text-align: center;
-    padding: 20px 0;
-    color: #fff;
-    font-size: 16px;
+  background-color: #ffffff1f;
 }
 
 /* filtros vv */
 
 #simple_filter,
 #advanced_filer {
-    max-width: 320px;
+  max-width: 320px;
 }
 
 #simple_filter > h2,
 #advanced_filer > h2 {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .filter_btn {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 .price {
-    max-width: 154px;
+  max-width: 154px;
 }
 
 #min_price {
-    margin-right: 8px;
+  margin-right: 8px;
 }

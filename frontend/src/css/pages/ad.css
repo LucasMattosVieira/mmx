@@ -1,0 +1,99 @@
+main {
+    max-width: 47.75rem;
+    margin: 0 auto;
+}
+
+main::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+aside {
+    width: 36%;
+    float: left;
+}
+
+.price {
+    width: 100%;
+    background-color: #222222;
+    color: #fff;
+    font-family: "GFS Didot", serif;
+    text-align: center;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    font-size: 1.5rem;
+
+    max-width: initial;
+}
+
+.price > span {
+    display: inline-block;
+    font-size: 0.875rem;
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 20rem;
+}
+
+.carousel > button {
+    position: absolute;
+    top: 50%;
+    background-color: rgba(255, 255, 255, 0.25);
+    width: 2.5rem;
+    height: 2.5rem;
+    margin: 0;
+    color: #222222;
+}
+
+.carousel > button#previous {
+    left: 0;
+}
+
+.carousel > button#next {
+    right: 0;
+}
+
+.carousel > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    max-width: initial;
+}
+
+address {
+    padding: 0.75rem;
+    font-weight: 300;
+    font-style: italic;
+    border: 2px dashed #222222;
+    margin-top: 2rem;
+}
+
+main > section {
+    width: 60%;
+    float: right;
+}
+
+main > section > h2 {
+    font-family: "GFS Didot", serif;
+    font-size: 1.5rem;
+
+    margin: 0;
+}
+
+main > section > h3 {
+    font-size: 0.875rem;
+    font-weight: 300;
+    font-style: italic;
+    color: #5a5a5a;
+}
+
+main > section > p {
+    color: #5a5a5a;
+    margin-top: 0.5rem;
+    line-height: 1.3;
+}
