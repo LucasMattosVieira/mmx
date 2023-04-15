@@ -122,3 +122,27 @@ footer{
     color: #fff;
     font-size: 16px;
 }
+
+/* filtros vv */
+
+#simple_filter,
+#advanced_filer {
+    max-width: 320px;
+}
+
+#simple_filter > h2,
+#advanced_filer > h2 {
+    margin-bottom: 0;
+}
+
+.active_filter {
+    display: block;
+}
+
+.hidden_filter {
+    display: none;
+}
+
+.filter_btn {
+    margin-top: 0;
+}

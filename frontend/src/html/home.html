@@ -25,7 +25,46 @@
             </div>
         </header>
         <main>
-            
+            <div id="simple_filter" class="active_filter">
+                <h2>Filtro</h2>
+                <button type="button" id="setAdvanced" class="filter_btn">SIMPLES</button>
+
+                <form action="">
+                    <div>
+                        <input type="text" name="title" id="title" placeholder="Título">
+                    </div>
+                    
+                    <button>Pesquisar</button>
+                </form>
+            </div>
+
+            <div id="advanced_filter" class="hidden_filter">
+                <h2>Filtro</h2>
+                <button type="button" id="setSimple" class="filter_btn">AVANÇADO</button>
+
+                <form action="">
+                    <div>
+                        <input type="text" name="title" id="title" placeholder="Título">
+                    </div>
+                    <div>
+                        <input type="text" name="description" id="description" placeholder="Descrição">
+                    </div>
+                    <div>
+                        <select name="category" id="category">
+                            <option value="">Categoria</option>
+                            <option value="eletronics">Eletrôncios</option>
+                            <option value="cars">Carros</option>
+                            <option value="houses">Imóveis</option>
+                        </select>
+                    </div>
+                    <div>
+                        <input type="text" name="min_price" id="min_price" placeholder="Preço mínimo">
+                        <input type="text" name="max_price" id="max_price" placeholder="Preço máximo">
+                    </div>
+                    <button>Pesquisar</button>
+                </form>
+            </div>
+
         </main>
         <footer>
             © 2023 BY SADDEVS INC. ALL RIGHTS RESERVED.
