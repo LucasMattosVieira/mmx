@@ -40,7 +40,68 @@
         >
       </div>
     </header>
-    <main></main>
+
+    <main>
+      <div id="advanced_filter">
+        <h2>Filtro</h2>
+        <button type="button" id="setSimple" class="filter_btn">AVANÇADO</button>
+
+        <form action="">
+            <div>
+                <input type="text" name="title" id="title" placeholder="Título">
+            </div>
+            <div>
+                <input type="text" name="description" id="description" placeholder="Descrição">
+            </div>
+            <div>
+                <select name="category" id="category">
+                    <option value="" disabled selected>Categoria</option>
+                    <option value="eletronics">Eletrôncios</option>
+                    <option value="cars">Carros</option>
+                    <option value="houses">Imóveis</option>
+                </select>
+            </div>
+            <div>
+                <input type="text" name="min_price" id="min_price" class="price" placeholder="Preço mínimo">
+                <input type="text" name="max_price" id="max_price" class="price" placeholder="Preço máximo">
+            </div>
+            <button type="button">PESQUISAR</button>
+        </form>
+    </div>
+
+      <div id="cards">
+        <div id="container_card">
+            <div id="card">
+                <img src="../assets/card.png" alt="imagem_teste" width="300px">
+                <h1 id="titulo">TÍTULO</h1>
+                <p id="descricao">Descricao um monte de coisa sem sentio dgdfd dgsgsg sdgsg dfsfsd dsfgdsg dgsgdsg
+                    dgsdgdsgsd dgsgsdgsg sgdsg</p>
+                <p id="preco">R$ 1.234,56</p>
+            </div>
+        </div>
+
+        <div id="container_card">
+            <div id="card">
+                <img src="../assets/card.png" alt="imagem_teste" width="300px">
+                <h1 id="titulo">TÍTULO</h1>
+                <p id="descricao">Descricao um monte de coisa sem sentio dgdfd dgsgsg sdgsg dfsfsd dsfgdsg dgsgdsg
+                    dgsdgdsgsd dgsgsdgsg sgdsg</p>
+                <p id="preco">R$ 1.234,56</p>
+            </div>
+        </div>
+
+        <div id="container_card">
+            <div id="card">
+                <img src="../assets/card.png" alt="imagem_teste" width="300px">
+                <h1 id="titulo">TÍTULO</h1>
+                <p id="descricao">Descricao um monte de coisa sem sentio dgdfd dgsgsg sdgsg dfsfsd dsfgdsg dgsgdsg
+                    dgsdgdsgsd dgsgsdgsg sgdsg</p>
+                <p id="preco">R$ 1.234,56</p>
+            </div>
+        </div>
+
+    </div>
+    </main>
     <footer>© 2023 BY SADDEVS INC. ALL RIGHTS RESERVED.</footer>
   </body>
 </html>

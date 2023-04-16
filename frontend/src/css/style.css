@@ -175,3 +175,48 @@ nav > a {
     margin: 8.5px auto;
     padding: 12px;
 }
+
+
+#preco {
+  color: #ffffff;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-align: center;
+  background-color: black;
+  font-size: 18pt;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-family: 'GFS Didot',serif;
+ 
+}
+
+#descricao {
+  color: black;
+  text-align: center;
+  font-family: Montserrat, sans-serif;;
+  font-size: 10pt;
+}
+
+#titulo {
+  color: black;
+  text-align: center;
+  font-family: 'GFS Didot',serif;
+  font-size: 18pt;
+  font-weight: lighter;
+}
+
+#card {
+  width: 300px;
+  height: 405px;
+  border: 3px solid black;
+}
+
+#cards {
+  display: flex;
+  padding-top: 60px;
+
+}
+
+#container_card {
+  padding-left: 50px;
+}
+
