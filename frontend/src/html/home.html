@@ -1,108 +1,79 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" >
-    <meta name="viewport" content="width=device-width, initial-scale=1" >
-    <script defer src="../js/script.js"></script>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>MMX - Tudo ao seu alcance</title>
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" 
+        href="https://fonts.googleapis.com/css?family=Montserrat|GFS+Didot">
+        <script defer src="../js/script.js"></script>
+    </head>
+    <body>
+        <nav>
+            <a href="#" class="current_page">HOME</a>
+            <a href="login.html">LOGIN</a>
+            <a href="signup.html">NOVA CONTA</a>
+        </nav>
+        <header>
+            <div id="header_div">
+                <img src="../assets/logo_rect.svg" alt="Logo rectangles 1" id="logo_img1" class="logo_rects">
+                <div id="logo_div">
+                    <h1 id="logo">MMX</h1>
+                    <h5 id="sub_logo">TUDO AO SEU ALCANCE</h5>
+                </div>
+                <img src="../assets/logo_rect.svg" alt="Logo rectangles 2" id="logo_img2" class="logo_rects">
+            </div>
+        </header>
 
-     <!-- Fonts -->
-     <link rel="preconnect" href="https://fonts.googleapis.com">
-     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-     <link href="https://fonts.googleapis.com/css2?family=GFS+Didot&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
- 
-     <!-- Styles -->
-     <link rel="stylesheet" href="../css/components/footer.css" >
-     <link rel="stylesheet" href="../css/global/style.css" >
-     <link rel="stylesheet" href="../css/style.css" >
+        <main>
+            <div id="simple_filter">
+                <h2>Filtro</h2>
+                <button type="button" id="setAdvanced" class="filter_btn">SIMPLES</button>
 
-    <title>MMX - Tudo ao seu alcance</title>
-  </head>
-  <body>
-    <nav>
-      <a href="home.html" class="current_page">HOME</a>
-      <a href="login.html">LOGIN</a>
-      <a href="signup.html">NOVA CONTA</a>
-    </nav>
-    <header>
-      <div id="header_div">
-        <img
-          src="../assets/logo_rect.svg"
-          alt="Logo rectangles 1"
-          id="logo_img1"
-        >
-        <div id="logo_div">
-          <h1 id="logo">MMX</h1>
-          <h5 id="sub_logo">TUDO AO SEU ALCANCE</h5>
-        </div>
-        <img
-          src="../assets/logo_rect.svg"
-          alt="Logo rectangles 2"
-          id="logo_img2"
-        >
-      </div>
-    </header>
-    <main>
-      <div id="simple_filter">
-        <h2>Filtro</h2>
-        <button type="button" id="setAdvanced" class="filter_btn">
-          SIMPLES
-        </button>
+                <form action="">
+                    <div>
+                        <input type="text" name="title" id="title" placeholder="Título">
+                    </div>
+                    
+                    <button type="button">PESQUISAR</button>
+                </form>
+            </div>
 
-        <form action="">
-          <div>
-            <input type="text" name="title" id="title" placeholder="Título" >
-          </div>
+            <div id="advanced_filter">
+                <h2>Filtro</h2>
+                <button type="button" id="setSimple" class="filter_btn">AVANÇADO</button>
 
-          <button>Pesquisar</button>
-        </form>
-      </div>
+                <form action="">
+                    <div>
+                        <input type="text" name="title" id="title" placeholder="Título">
+                    </div>
+                    <div>
+                        <input type="text" name="description" id="description" placeholder="Descrição">
+                    </div>
+                    <div>
+                        <select name="category" id="category">
+                            <option value="" disabled selected>Categoria</option>
+                            <option value="eletronics">Eletrôncios</option>
+                            <option value="cars">Carros</option>
+                            <option value="houses">Imóveis</option>
+                        </select>
+                    </div>
+                    <div>
+                        <input type="text" name="min_price" id="min_price" class="price" placeholder="Preço mínimo">
+                        <input type="text" name="max_price" id="max_price" class="price" placeholder="Preço máximo">
+                    </div>
+                    <button type="button">PESQUISAR</button>
+                </form>
+            </div>
 
-      <div id="advanced_filter">
-        <h2>Filtro</h2>
-        <button type="button" id="setSimple" class="filter_btn">
-          AVANÇADO
-        </button>
-
-        <form action="">
-          <div>
-            <input type="text" name="title" id="title" placeholder="Título" >
-          </div>
-          <div>
-            <input
-              type="text"
-              name="description"
-              id="description"
-              placeholder="Descrição"
-            >
-          </div>
-          <div>
-            <select name="category" id="category">
-              <option value="">Categoria</option>
-              <option value="eletronics">Eletrôncios</option>
-              <option value="cars">Carros</option>
-              <option value="houses">Imóveis</option>
-            </select>
-          </div>
-          <div>
-            <input
-              type="text"
-              name="min_price"
-              id="min_price"
-              class="price"
-              placeholder="Preço mínimo"
-            >
-            <input
-              type="text"
-              name="max_price"
-              id="max_price"
-              class="price"
-              placeholder="Preço máximo"
-            >
-          </div>
-          <button>Pesquisar</button>
-        </form>
-      </div>
-    </main>
-    <footer>© 2023 BY SADDEVS INC. ALL RIGHTS RESERVED.</footer>
-  </body>
+            <div id="start_search">
+                <img src="../assets/search.svg" alt="Search image" id="search_img">
+                <h5 id="search_sub">Comece a pesquisar!</h5>
+            </div>
+        </main>
+        <footer>
+            © 2023 BY SADDEVS INC. ALL RIGHTS RESERVED.
+        </footer>
+    </body>
 </html>
