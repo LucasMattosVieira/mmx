@@ -126,23 +126,52 @@ nav > a {
 /* filtros vv */
 
 #simple_filter,
-#advanced_filer {
-  max-width: 320px;
+#advanced_filter {
+    /* max-width: 320px; */
+    /* margin-left: 60px; */
+    float: left;
+    width: 22.92%;
 }
 
 #simple_filter > h2,
-#advanced_filer > h2 {
-  margin-bottom: 0;
+#advanced_filter > h2 {
+    margin-bottom: 0;
 }
 
 .filter_btn {
-  margin-top: 0;
+    margin-top: 0;
+    font-size: 8px;
+    max-width: 60px;
+    max-height: 14px;
 }
 
 .price {
-  max-width: 154px;
+    max-width: 154px;
 }
 
 #min_price {
-  margin-right: 8px;
+    margin-right: 7px;
+}
+
+#start_search {
+    float: left;
+    width: 54.2%;
+    margin-top: 56px;
+    margin-bottom: 200px;
+}
+
+#search_img {
+    max-width: 234px;
+    width: 100%;
+    height: auto;
+}
+
+#search_sub {
+    font-size: 14px;
+    font-weight: lighter;
+    color: #222;
+    border-top: 8px solid #222;
+    max-width: 234px;
+    margin: 8.5px auto;
+    padding: 12px;
 }
