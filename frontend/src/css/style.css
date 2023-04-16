@@ -29,7 +29,7 @@ header {
   color: #222;
   font-family: "GFS Didot", serif;
   font-size: 59px;
-  font-weight: lighter;
+  font-weight: 300;
   margin: 0 auto;
   line-height: 1.2;
 }
@@ -37,14 +37,14 @@ header {
 #sub_logo {
   color: #5a5a5a;
   font-size: 12px;
-  font-weight: lighter;
+  font-weight: 400;
   margin: 0 auto;
 }
 
-img {
-  max-width: 132px;
-  width: 100%;
-  height: auto;
+.logo_rects {
+    max-width: 132px;
+    width: 100%;
+    height: auto;
 }
 
 #logo_img1 {
@@ -64,7 +64,7 @@ img {
 h2 {
   font-family: "GFS Didot", serif;
   font-size: 24px;
-  font-weight: lighter;
+  font-weight: 300;
   margin-top: 50px;
 }
 
@@ -168,7 +168,7 @@ nav > a {
 
 #search_sub {
     font-size: 14px;
-    font-weight: lighter;
+    font-weight: 300;
     color: #222;
     border-top: 8px solid #222;
     max-width: 234px;
@@ -186,7 +186,9 @@ nav > a {
   padding-top: 5px;
   padding-bottom: 5px;
   font-family: 'GFS Didot',serif;
- 
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 #descricao {
@@ -201,10 +203,12 @@ nav > a {
   text-align: center;
   font-family: 'GFS Didot',serif;
   font-size: 18pt;
-  font-weight: lighter;
+  font-weight: 300;
+  margin: 0.5rem 0;
 }
 
 #card {
+  position: relative;
   width: 300px;
   height: 405px;
   border: 3px solid black;
@@ -220,3 +224,6 @@ nav > a {
   padding-left: 50px;
 }
 
+#card img {
+  width: 100%;
+}
