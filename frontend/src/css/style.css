@@ -42,9 +42,9 @@ header {
 }
 
 .logo_rects {
-    max-width: 132px;
-    width: 100%;
-    height: auto;
+  max-width: 132px;
+  width: 100%;
+  height: auto;
 }
 
 #logo_img1 {
@@ -66,6 +66,12 @@ h2 {
   font-size: 24px;
   font-weight: 300;
   margin-top: 50px;
+}
+
+main::after {
+  content: "";
+  display: block;
+  clear: both;
 }
 
 main > div {
@@ -127,103 +133,121 @@ nav > a {
 
 #simple_filter,
 #advanced_filter {
-    /* max-width: 320px; */
-    /* margin-left: 60px; */
-    float: left;
-    width: 22.92%;
+  /* position: absolute;
+  max-width: 320px;
+  */
+  margin-left: 60px;
+  float: left;
+  width: max-content;
 }
 
 #simple_filter > h2,
 #advanced_filter > h2 {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .filter_btn {
-    margin-top: 0;
-    font-size: 8px;
-    max-width: 60px;
-    max-height: 14px;
+  margin-top: 0;
+  font-size: 8px;
+  max-width: 60px;
+  max-height: 14px;
 }
 
 .price {
-    max-width: 154px;
+  max-width: 154px;
 }
 
 #min_price {
-    margin-right: 7px;
+  margin-right: 7px;
 }
 
 #start_search {
-    float: left;
-    width: 54.2%;
-    margin-top: 56px;
-    margin-bottom: 200px;
+  float: left;
+  width: 54.2%;
+  margin-top: 56px;
+  margin-bottom: 200px;
 }
 
 #search_img {
-    max-width: 234px;
-    width: 100%;
-    height: auto;
+  max-width: 234px;
+  width: 100%;
+  height: auto;
 }
 
 #search_sub {
-    font-size: 14px;
-    font-weight: 300;
-    color: #222;
-    border-top: 8px solid #222;
-    max-width: 234px;
-    margin: 8.5px auto;
-    padding: 12px;
+  font-size: 14px;
+  font-weight: 300;
+  color: #222;
+  border-top: 8px solid #222;
+  max-width: 234px;
+  margin: 8.5px auto;
+  padding: 12px;
 }
 
+/*  */
 
-#preco {
+.preco {
   color: #ffffff;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   text-align: center;
   background-color: black;
   font-size: 18pt;
   padding-top: 5px;
   padding-bottom: 5px;
-  font-family: 'GFS Didot',serif;
+  font-family: "GFS Didot", serif;
   position: absolute;
   bottom: 0;
   width: 100%;
 }
 
-#descricao {
+.descricao {
   color: black;
   text-align: center;
-  font-family: Montserrat, sans-serif;;
+  font-family: Montserrat, sans-serif;
   font-size: 10pt;
 }
 
-#titulo {
+.titulo {
   color: black;
   text-align: center;
-  font-family: 'GFS Didot',serif;
+  font-family: "GFS Didot", serif;
   font-size: 18pt;
   font-weight: 300;
   margin: 0.5rem 0;
 }
 
-#card {
+.card {
   position: relative;
+  display: inline-block;
   width: 300px;
   height: 405px;
   border: 3px solid black;
+  margin: 25px;
 }
 
 #cards {
-  display: flex;
+  /* margin: 0 auto; */
+  float: left;
   padding-top: 60px;
-
+  max-width: 1100px;
+  width: 100%;
+  margin-left: 25px;
 }
 
-#container_card {
-  padding-left: 50px;
+@media screen and (max-width: 1525px) {
+  #simple_filter,
+  #advanced_filter {
+    float: none;
+    margin: 0 auto;
+  }
+
+  #cards {
+    max-width: 750px;
+    margin: 0 auto;
+    float: none;
+  }
 }
 
-#card img {
+.card img {
   width: 100%;
 }
