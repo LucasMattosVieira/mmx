@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <script defer src="../js/script.js"></script>
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,13 +45,28 @@
     </header>
 
     <main>
+        <div id="simple_filter">
+            <h2>Filtro</h2>
+            <button type="button" id="setAdvanced" class="filter_btn">
+                SIMPLES
+            </button>
+
+            <form action="" id="simpleForm">
+                <div>
+                    <input type="text" name="title" id="title" placeholder="Título">
+                </div>
+                
+                <button id="simpleSearch" type="button">PESQUISAR</button>
+            </form>
+        </div>
+
         <div id="advanced_filter">
             <h2>Filtro</h2>
             <button type="button" id="setSimple" class="filter_btn">
                 AVANÇADO
             </button>
 
-            <form action="">
+            <form action="" id="advForm">
                 <div>
                     <input type="text" name="title" id="title" placeholder="Título">
                 </div>
@@ -88,7 +103,7 @@
                     >
                 </div>
 
-                <button type="button">PESQUISAR</button>
+                <button id="advSearch" type="button">PESQUISAR</button>
             </form>
         </div>
 
