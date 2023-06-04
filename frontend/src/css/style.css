@@ -161,20 +161,23 @@ nav > a {
   margin-right: 7px;
 }
 
-#start_search {
+#start_search,
+#no_results {
   float: left;
   width: 54.2%;
   margin-top: 56px;
   margin-bottom: 200px;
 }
 
-#search_img {
+#search_img, 
+#error_img {
   max-width: 234px;
   width: 100%;
   height: auto;
 }
 
-#search_sub {
+#search_sub, 
+#error_sub {
   font-size: 14px;
   font-weight: 300;
   color: #222;
@@ -182,6 +185,10 @@ nav > a {
   max-width: 234px;
   margin: 8.5px auto;
   padding: 12px;
+}
+
+#error_sub {
+  margin-top: -16px;
 }
 
 /*  */

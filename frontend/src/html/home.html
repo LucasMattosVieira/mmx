@@ -43,7 +43,7 @@
                         <input type="text" name="title" id="title" placeholder="Título">
                     </div>
                     
-                    <button id="simpleSearch" type="button">PESQUISAR</button>
+                    <button>PESQUISAR</button>
                 </form>
             </div>
 
@@ -70,13 +70,18 @@
                         <input type="text" name="min_price" id="min_price" class="price" placeholder="Preço mínimo">
                         <input type="text" name="max_price" id="max_price" class="price" placeholder="Preço máximo">
                     </div>
-                    <button id="advSearch" type="button">PESQUISAR</button>
+                    <button>PESQUISAR</button>
                 </form>
             </div>
 
             <div id="start_search">
                 <img src="../assets/search.svg" alt="Search image" id="search_img">
                 <h5 id="search_sub">Comece a pesquisar!</h5>
+            </div>
+
+            <div id="no_results">
+                <img src="../assets/error.svg" alt="Error image" id="error_img">
+                <h5 id="error_sub">Nenhum anúncio encontrado :(</h5>
             </div>
         </main>
         <footer>
