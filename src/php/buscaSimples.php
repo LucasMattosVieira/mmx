@@ -1,5 +1,5 @@
 <?php
-    require_once "conexaoMySQL.php";
+    require_once "mySQLConnect.php";
 
     $pdo = mysqlConnect();
 
