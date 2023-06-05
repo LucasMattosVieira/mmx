@@ -1,0 +1,11 @@
+{
+  "name": "mmx",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx live-server ./src"
+  },
+  "contributors": ["Lucas Marçal Coutinho"],
+  "license": "ISC"
+}
