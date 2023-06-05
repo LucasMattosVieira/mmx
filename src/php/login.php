@@ -4,5 +4,7 @@
     $email = $_POST["email"] ?? "";
     $password = $_POST["password"] ?? "";
 
-    
+    if(trim($nome) == "") {}
+
+    if(trim($password) == "") {}
 ?>
