@@ -1,4 +1,4 @@
-function handleSubmit() {
+function handleSubmit(event) {
 
 }
 
