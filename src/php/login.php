@@ -4,9 +4,13 @@
     $email = $_POST["email"] ?? "";
     $password = $_POST["password"] ?? "";
 
-    if(trim($nome) == "") {}
+    if(trim($nome) == "") {
+        throw new Exception("E-mail não preenchido.");
+    }
 
-    if(trim($password) == "") {}
+    if(trim($password) == "") {
+        throw new Exception("Senha não preenchida.")
+    }
 
     $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 ?>
