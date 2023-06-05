@@ -13,4 +13,12 @@
     }
 
     $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+    
+    $sql = <<<SQL
+		SELECT SenhaHash 
+        FROM Anunciante
+        WHERE Email = ?
+    SQL;
+    
+    $stmt = 
 ?>
