@@ -26,6 +26,8 @@
         WHERE CodAnuncio = Codigo AND
             Titulo LIKE ? AND
             Titulo LIKE ? AND
+            Titulo LIKE ? AND
+            Titulo LIKE ? AND
             Titulo LIKE ?
         LIMIT 6 OFFSET ?
         SQL;
@@ -35,24 +37,23 @@
 
     $title = explode(" ", $title);
 
-    $title1 = "%%";
-    $title2 = "%%";
-    $title3 = "%%";
+    $statements = [];
 
     $len = count($title);
 
-    if ($len > 0) {
-        $title1 = "%" . $title[0] . "%";
-        if ($len > 1) {
-            $title2 = "%" . $title[1] . "%";
-            if ($len > 2) {
-                $title3 = "%" . $title[2] . "%";
-            }
+    for ($i = 0; $i < 5; $i++) { //pega as 5 primeiras palavras (trata input com menos de 5)
+        if ($i < $len) {
+            $title = "%" . $title[$i] . "%";
+            array_push($statements, $title);
+        } else {
+            array_push($statements, "%%");
         }
     }
 
+    array_push($statements, $offset);
+
     $stmt = $pdo->prepare($sql);
-    $stmt->execute([$title1, $title2, $title3, $offset]);
+    $stmt->execute($statements);
 
     $result_array = [];
 
