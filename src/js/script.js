@@ -91,7 +91,7 @@ async function searchResults() {
     }
 }
 
-function newResults(results) {
+function newResults(ads) {
 
     if (search_off) { // apos a primeira busca, ativa a rolagem dos resultados
         document.addEventListener('scroll', checkEnd);
@@ -99,16 +99,26 @@ function newResults(results) {
         search_img.style.display = 'none';
     }
 
-    if (results.length == 0) {
+    if (ads.length == 0) {
         noResults();
         return;
     }
 
     current_result_offset++;
 
+    console.log(ads);
+    console.log(ads.length);
 
-    console.log(results);
-    console.log(results.length);
+    for (ad in ads) {
+        let new_card = document.createElement("div");
+        new_card.innerHTML = `<img src="../assets/card.png" alt="imagem_teste" width="300px">` +
+                            `<h1 class="titulo">${ad["title_r"]}</h1>` +
+                            `<p class="descricao">${ad["descr"]}</p>` +
+                            `<p class="preco">R$ 1.234,56</p>`;
+        new_card.classList.add("card");
+        document.getElementById("cards").appendChild(new_card);
+}
+
 }
 
 function noResults() {
