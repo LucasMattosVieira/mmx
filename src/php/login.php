@@ -7,4 +7,6 @@
     if(trim($nome) == "") {}
 
     if(trim($password) == "") {}
+
+    $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 ?>
