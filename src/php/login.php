@@ -1,5 +1,7 @@
 <?php
     require_once "conexaoMySQL.php";
+    
+	$pdo = mysqlConnect();  
 
     $email = $_POST["email"] ?? "";
     $password = $_POST["password"] ?? "";
@@ -20,5 +22,41 @@
         WHERE Email = ?
     SQL;
     
-    $stmt = 
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$email]);
+    
+    $result = $stmt->fetch();
+    
+    header("Content-type: application/json");
+    
+    if(result[0]["SenhaHash"] == $password) {
+        $_SESSION["email"] = $email;
+        
+    } else {
+        
+    }
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
