@@ -81,7 +81,7 @@ async function searchResults() {
 
     } else {
         try {
-            let response = await fetch(`/mmx/src/php/buscaTeste.php?${search_params}`);
+            let response = await fetch(`/mmx/src/php/buscaSimples.php?${search_params}`);
             let results = await response.json();
             newResults(results);
         }
