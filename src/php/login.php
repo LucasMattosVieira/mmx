@@ -18,8 +18,8 @@
     
     $sql = <<<SQL
 		SELECT SenhaHash 
-        FROM Anunciante
-        WHERE Email = ?
+		FROM Anunciante
+		WHERE Email = ?
     SQL;
     
     $stmt = $pdo->prepare($sql);
@@ -29,7 +29,8 @@
     
     header("Content-type: application/json");
     
-    if(result[0]["SenhaHash"] == $password) {
+    if(password_verify($result[0]["SenhaHash"], $password)) {
+        session_start();
         $_SESSION["email"] = $email;
         
     } else {
