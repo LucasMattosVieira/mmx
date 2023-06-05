@@ -71,7 +71,7 @@ async function searchResults() {
     if (current_form == adv_form) {
 
         try {
-            let response = await fetch(`/mmx/src/php/buscaAvancada.php?${search_params}`);
+            let response = await fetch(`/mmx/src/php/advancedSearch.php?${search_params}`);
             let results = await response.json();
             newResults(results);
         }
@@ -81,7 +81,7 @@ async function searchResults() {
 
     } else {
         try {
-            let response = await fetch(`/mmx/src/php/buscaSimples.php?${search_params}`);
+            let response = await fetch(`/mmx/src/php/simpleSearch.php?${search_params}`);
             let results = await response.json();
             newResults(results);
         }
