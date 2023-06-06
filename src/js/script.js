@@ -39,24 +39,10 @@ let current_result_offset = 0;
 let search_off = true;
 
 function checkEnd() {
-    let last_card = document.querySelector("#cards > div:last-child");
-    
-
-    if ((window.scrollY + window.innerHeight) > (last_card.offsetTop + last_card.clientHeight - 50)) {
-        console.log("Fim da pagina");
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        // console.log("Fim da pagina");
 
         searchResults();
-        // for (let i = 0; i < 6; i++) {
-            
-        //     let new_card = document.createElement("div");
-        //     new_card.innerHTML = '<img src="../assets/card.png" alt="imagem_teste" width="300px">' +
-        //                         '<h1 class="titulo">TÍTULO</h1>' +
-        //                         '<p class="descricao">Descrição teste</p>' +
-        //                         '<p class="preco">R$ 1.234,56</p>';
-        //     new_card.classList.add("card");
-        //     document.getElementById("cards").appendChild(new_card);
-        //     max_results--;
-        // }
         checkEnd();
     }
     
@@ -72,29 +58,31 @@ async function searchResults() {
 
         try {
             let response = await fetch(`/mmx/src/php/advancedSearch.php?${search_params}`);
-            let results = await response.json();
-            newResults(results);
+            var results = await response.json();  
         }
         catch (e) {
             console.log(e);
         }
+        newResults(results);
 
     } else {
         try {
             let response = await fetch(`/mmx/src/php/simpleSearch.php?${search_params}`);
-            let results = await response.json();
-            newResults(results);
+            var results = await response.json();  
         }
         catch (e) {
             console.log(e);
         }
+        newResults(results);
     }
 }
 
 function newResults(ads) {
 
     if (search_off) { // apos a primeira busca, ativa a rolagem dos resultados
-        document.addEventListener('scroll', checkEnd);
+        if (ads.length > 5) {
+            document.addEventListener('scroll', checkEnd);
+        }
         search_off = false;
         search_img.style.display = 'none';
     }
@@ -106,18 +94,21 @@ function newResults(ads) {
 
     current_result_offset++;
 
-    console.log(ads);
-    console.log(ads.length);
-
-    for (ad in ads) {
+    // console.log(ads);
+    // console.log(ads.length);
+    
+    for (let i = 0; i < ads.length; i++) {
         let new_card = document.createElement("div");
-        new_card.innerHTML = `<img src="../assets/card.png" alt="imagem_teste" width="300px">` +
-                            `<h1 class="titulo">${ad["title_r"]}</h1>` +
-                            `<p class="descricao">${ad["descr"]}</p>` +
-                            `<p class="preco">R$ 1.234,56</p>`;
+        let price = new Intl.NumberFormat('pt-BR', {style: 'currency',currency: 'BRL',});
+        new_card.innerHTML = `<a href="../php/ad.php?id=${ads[i]["code"]}">` +
+                            `<img src="../assets/card.png" alt="imagem_teste" width="300px">` +
+                            `<h1 class="titulo">${ads[i]["title_r"]}</h1>` +
+                            `<p class="descricao">${ads[i]["descr"]}</p>` +
+                            `<p class="preco">${price.format(ads[i]["price"])}</p>` +
+                            `</a>`;
         new_card.classList.add("card");
         document.getElementById("cards").appendChild(new_card);
-}
+    }
 
 }
 
@@ -127,3 +118,4 @@ function noResults() {
     }
     document.removeEventListener('scroll', checkEnd); // para de buscar mais resultados 
 }
+
