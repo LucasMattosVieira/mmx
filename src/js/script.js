@@ -7,6 +7,10 @@ const adv_form = document.getElementById("advForm");
 const search_img = document.getElementById("start_search");
 const error_img = document.getElementById("no_results");
 
+const categorySelect = document.getElementById("category");
+
+window.onload = getCategories();
+
 advanced_filter.style.display = 'none';
 error_img.style.display = 'none';
 
@@ -118,3 +122,19 @@ function noResults() {
     document.removeEventListener('scroll', checkEnd); // para de buscar mais resultados 
 }
 
+async function getCategories() {
+    try {
+        let response = await fetch(`/mmx/src/php/getCategories.php`);
+        var results = await response.json();  
+    }
+    catch (e) {
+        console.log(e);
+    }
+
+    for (let i = 0; i < results.length; i++) {
+        let option = document.createElement("option");
+        option.value = results[i]["code"];
+        option.innerHTML = results[i]["name"];
+        categorySelect.appendChild(option);
+    }
+}
