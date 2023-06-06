@@ -1,11 +1,10 @@
 <?php
     function mysqlConnect() {
-
         // $host = "sql106.epizy.com";
         // $username = "epiz_33702321";
         // $password = "7yqFJTns1fGlm";
         // $dbname = "epiz_33702321_project_mmx";
-        $host = "http://127.0.0.1:13306";
+        $host = "mariadb";
         $username = "docker";
         $password = "docker";
         $dbname = "docker";
