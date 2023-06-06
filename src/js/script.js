@@ -43,13 +43,12 @@ function checkEnd() {
         // console.log("Fim da pagina");
 
         searchResults();
-        checkEnd();
     }
     
 }
 
 async function searchResults() {
-
+    console.log("more results");
     const formData = new FormData(current_form);
     let search_params = new URLSearchParams(formData);
     search_params.append("offset", current_result_offset);
