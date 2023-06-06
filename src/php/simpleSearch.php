@@ -43,8 +43,8 @@
 
     for ($i = 0; $i < 5; $i++) { //pega as 5 primeiras palavras (trata input com menos de 5)
         if ($i < $len) {
-            $title = "%" . $title[$i] . "%";
-            array_push($statements, $title);
+            $titleaux = "%" . $title[$i] . "%";
+            array_push($statements, $titleaux);
         } else {
             array_push($statements, "%%");
         }
