@@ -58,7 +58,12 @@
     $result_array = [];
 
     while ($row = $stmt->fetch()) {
-        $result = new Result($row['Codigo'], $row['Titulo'], $row['Descricao'], $row['Preco'], $row['NomeArqFoto']);
+        $result = new Result($row['Codigo'], 
+                            htmlspecialchars($row['Titulo']), 
+                            htmlspecialchars($row['Descricao']), 
+                            $row['Preco'], 
+                            htmlspecialchars($row['NomeArqFoto']));
+
         array_push($result_array, $result);
     }
 
