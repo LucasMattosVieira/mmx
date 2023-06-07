@@ -6,14 +6,14 @@
     
     class Result {
         public $code;
-        public $title_r;
+        public $titleResult;
         public $descr;
         public $price;
         public $picture;
         
-        function __construct($code, $title_r, $descr, $price, $picture) {
+        function __construct($code, $titleResult, $descr, $price, $picture) {
             $this->code = $code;
-            $this->title_r = $title_r;
+            $this->titleResult = $titleResult;
             $this->descr = $descr;
             $this->price = $price;
             $this->picture = $picture;
