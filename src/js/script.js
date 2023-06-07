@@ -1,128 +1,140 @@
-const simple_filter = document.getElementById("simple_filter");
-const advanced_filter = document.getElementById("advanced_filter");
+const simpleFilter = document.getElementById("simple_filter");
+const advancedFilter = document.getElementById("advanced_filter");
 
-const simple_form = document.getElementById("simpleForm");
-const adv_form = document.getElementById("advForm");
+const simpleForm = document.getElementById("simpleForm");
+const advancedForm = document.getElementById("advForm");
 
-const search_img = document.getElementById("start_search");
-const error_img = document.getElementById("no_results");
+const searchSVG = document.getElementById("start_search");
+const errorSVG = document.getElementById("no_results");
 
 const categorySelect = document.getElementById("category");
+const cardDiv = document.getElementById("cards");
 
-window.onload = getCategories();
+let currentForm = simpleForm;
+let currentResultOffset = 0;
+let searchOff = true;
 
-advanced_filter.style.display = 'none';
-error_img.style.display = 'none';
+advancedFilter.style.display = 'none';
+errorSVG.style.display = 'none';
 
-let current_form = simple_form;
-
+window.onload = GetCategories(); // carrega as categorias do banco de dados
+window.onload = FetchAllAds(); // busca todos os anuncios por padrao ao carregar a pagina Home
 
 document.getElementById("setAdvanced").addEventListener('click', function() {
-    simple_filter.style.display = 'none';
-    advanced_filter.style.display = 'block';
-    current_form = adv_form;
+    simpleFilter.style.display = 'none';
+    advancedFilter.style.display = 'block';
 });
 
 document.getElementById("setSimple").addEventListener('click', function() {
-    advanced_filter.style.display = 'none';
-    simple_filter.style.display = 'block';
-    current_form = simple_form;
+    advancedFilter.style.display = 'none';
+    simpleFilter.style.display = 'block';
 });
 
-simple_form.addEventListener('submit',(e) => {
+simpleForm.addEventListener('submit',(e) => {
     e.preventDefault();
-    searchResults();
+    ClearCards();
+    currentForm = simpleForm;
+    SearchResults();
 });
 
-// adv_form.addEventListener('submit',(e) => {
-//     e.preventDefault();
-//     searchResults();
-// });
+advancedForm.addEventListener('submit',(e) => {
+    e.preventDefault();
+    ClearCards();
+    currentForm = advancedForm;
+    SearchResults();
+});
 
-let current_result_offset = 0;
-let search_off = true;
-
-function checkEnd() {
+function CheckEnd() {
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
         // console.log("Fim da pagina");
-
-        searchResults();
+        SearchResults();
     }
-    
 }
 
-async function searchResults() {
-    console.log("more results");
-    const formData = new FormData(current_form);
-    let search_params = new URLSearchParams(formData);
-    search_params.append("offset", current_result_offset);
+async function FetchAllAds() {     // traz todos os anuncios
+    try {
+        let response = await fetch(`/mmx/src/php/searchAll.php?offset=${currentResultOffset}`);
+        var results = await response.json();
+    }
+    catch (e) {
+        console.log(e);
+    }
+    NewResults(results);
+}
 
-    if (current_form == adv_form) {
+async function SearchResults() {    // busca os anuncios usando os filtros da pagina
+    // console.log("more results");
+    const formData = new FormData(currentForm);
+    let searchParameters = new URLSearchParams(formData);
+    searchParameters.append("offset", currentResultOffset);
+
+    if (currentForm == advancedForm) {
 
         try {
-            let response = await fetch(`/mmx/src/php/advancedSearch.php?${search_params}`);
+            let response = await fetch(`/mmx/src/php/advancedSearch.php?${searchParameters}`);
             var results = await response.json();  
         }
         catch (e) {
             console.log(e);
         }
-        newResults(results);
+        NewResults(results);
 
     } else {
         try {
-            let response = await fetch(`/mmx/src/php/simpleSearch.php?${search_params}`);
+            let response = await fetch(`/mmx/src/php/simpleSearch.php?${searchParameters}`);
             var results = await response.json();  
         }
         catch (e) {
             console.log(e);
         }
-        newResults(results);
+        NewResults(results);
     }
 }
 
-function newResults(ads) {
-
-    if (search_off) { // apos a primeira busca, ativa a rolagem dos resultados
+function NewResults(ads) {
+    console.log(`Novos cards. Offset = ${currentResultOffset}`);
+    console.log(ads);
+    if (searchOff) { // apos clicar no botao de busca, ativa a rolagem dos resultados
         if (ads.length > 5) {
-            document.addEventListener('scroll', checkEnd);
+            document.addEventListener('scroll', CheckEnd);
         }
-        search_off = false;
-        search_img.style.display = 'none';
+        searchOff = false;
+        searchSVG.style.display = 'none';
     }
 
     if (ads.length == 0) {
-        noResults();
+        NoResults();
         return;
     }
 
-    current_result_offset++;
+    currentResultOffset++;
 
     // console.log(ads);
     // console.log(ads.length);
     
     for (let i = 0; i < ads.length; i++) {
-        let new_card = document.createElement("div");
+        let newCard = document.createElement("div");
         let price = new Intl.NumberFormat('pt-BR', {style: 'currency',currency: 'BRL',});
-        new_card.innerHTML = `<a href="../php/ad.php?id=${ads[i]["code"]}">` +
+        newCard.innerHTML = `<a href="../php/ad.php?id=${ads[i]["code"]}">` +
                             `<img src="../assets/card.png" alt="imagem_teste" width="300px">` +
-                            `<h1 class="titulo">${ads[i]["title_r"]}</h1>` +
+                            `<h1 class="titulo">${ads[i]["titleResult"]}</h1>` +
                             `<p class="descricao">${ads[i]["descr"]}</p>` +
                             `<p class="preco">${price.format(ads[i]["price"])}</p>` +
                             `</a>`;
-        new_card.classList.add("card");
-        document.getElementById("cards").appendChild(new_card);
+        newCard.classList.add("card");
+        cardDiv.appendChild(newCard);
     }
-
+    
 }
 
-function noResults() {
-    if (current_result_offset == 0) { // zero resultados encontrados na 1a busca
-        error_img.style.display = 'block';
+function NoResults() {
+    if (currentResultOffset == 0) { // zero resultados encontrados na 1a busca
+        errorSVG.style.display = 'block';
     }
-    document.removeEventListener('scroll', checkEnd); // para de buscar mais resultados 
+    document.removeEventListener('scroll', CheckEnd); // para de buscar mais resultados 
 }
 
-async function getCategories() {
+async function GetCategories() {
     try {
         let response = await fetch(`/mmx/src/php/getCategories.php`);
         var results = await response.json();  
@@ -137,4 +149,11 @@ async function getCategories() {
         option.innerHTML = results[i]["name"];
         categorySelect.appendChild(option);
     }
+}
+
+function ClearCards() {
+    console.log("Div limpo");
+    cardDiv.textContent = '';
+    currentResultOffset = 0;
+    searchOff = true;
 }
