@@ -49,7 +49,7 @@
 
         <form action="../php/login.php" method="post" id="loginForm">
           <div>
-            <input type="email" name="email" id="email" placeholder="E-mail" >
+            <input type="email" name="email" id="email" placeholder="E-mail" required >
           </div>
 
           <div>
@@ -58,10 +58,11 @@
               name="password"
               id="password"
               placeholder="Senha"
+              required
             >
           </div>
 
-          <button>ENTRAR</button>
+          <button id="btnSubmit">ENTRAR</button>
         </form>
       </div>
     </main>
