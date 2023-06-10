@@ -66,25 +66,37 @@ async function SearchResults() {    // busca os anuncios usando os filtros da pa
     let searchParameters = new URLSearchParams(formData);
     searchParameters.append("offset", currentResultOffset);
 
-    if (currentForm == advancedForm) {
+    const btnSubmit = currentForm.querySelector("button");
 
+    if (currentForm == advancedForm) {
         try {
+            btnSubmit.disabled = true;
+            btnSubmit.textContent = "Pesquisando...";
             let response = await fetch(`/mmx/src/php/advancedSearch.php?${searchParameters}`);
             var results = await response.json();  
+        } catch (error) {
+            console.log(error);
+            alert("Erro ao tentar pesquisar anúncios :(");
+        } finally {
+            btnSubmit.disabled = false;
+            btnSubmit.textContent = "Pesquisar";
         }
-        catch (e) {
-            console.log(e);
-        }
+        
         NewResults(results);
-
     } else {
         try {
+            btnSubmit.disabled = true;
+            btnSubmit.textContent = "Pesquisando...";
             let response = await fetch(`/mmx/src/php/simpleSearch.php?${searchParameters}`);
             var results = await response.json();  
+        } catch (error) {
+            console.log(error);
+            alert("Erro ao tentar pesquisar anúncios :(");
+        } finally {
+            btnSubmit.disabled = false;
+            btnSubmit.textContent = "Pesquisar";
         }
-        catch (e) {
-            console.log(e);
-        }
+
         NewResults(results);
     }
 }
