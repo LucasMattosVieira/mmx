@@ -1,5 +1,12 @@
 <?php
     session_start();
+
+    $id = $_SESSION["userID"];
+
+    if(!isset($id)) {
+        header("Location: login.php");
+        exit();
+    }
 ?>
 
 <!DOCTYPE html>
