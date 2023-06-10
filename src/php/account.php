@@ -44,11 +44,10 @@
     <body>
         <nav>
             <a href="home.php">HOME</a>
-            <a href="">NOVO ANÚNCIO</a>
+            <a href="createAd.php">NOVO ANÚNCIO</a>
             <a href="">MEUS ANÚNCIOS</a>
             <a href="">MENSAGENS</a>
-            <a href="">NOVO ANÚNCIO</a>
-            <a href="">MINHA CONTA</a>
+            <a href="#" class="current_page">MINHA CONTA</a>
             <a href="logout.php">SAIR</a>
         </nav>
         <header>

@@ -7,7 +7,6 @@ const advancedForm = document.getElementById("advForm");
 const searchSVG = document.getElementById("start_search");
 const errorSVG = document.getElementById("no_results");
 
-const categorySelect = document.getElementById("category");
 const cardDiv = document.getElementById("cards");
 
 let currentForm = simpleForm;
@@ -17,7 +16,6 @@ let searchOff = true;
 advancedFilter.style.display = 'none';
 errorSVG.style.display = 'none';
 
-window.onload = GetCategories(); // carrega as categorias do banco de dados
 window.onload = FetchAllAds(); // busca todos os anuncios por padrao ao carregar a pagina Home
 
 document.getElementById("setAdvanced").addEventListener('click', function() {
@@ -132,23 +130,6 @@ function NoResults() {
         errorSVG.style.display = 'block';
     }
     document.removeEventListener('scroll', CheckEnd); // para de buscar mais resultados 
-}
-
-async function GetCategories() {
-    try {
-        let response = await fetch(`/mmx/src/php/getCategories.php`);
-        var results = await response.json();  
-    }
-    catch (e) {
-        console.log(e);
-    }
-
-    for (let i = 0; i < results.length; i++) {
-        let option = document.createElement("option");
-        option.value = results[i]["code"];
-        option.innerHTML = results[i]["name"];
-        categorySelect.appendChild(option);
-    }
 }
 
 function ClearCards() {
