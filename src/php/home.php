@@ -1,5 +1,14 @@
 <?php
-    session_start()
+    session_start();
+
+    $isLoggedIn = false;
+
+    if(isset($_SESSION["userID"])) {  
+        $isLoggedIn = true;
+    } else {
+        session_unset();
+        session_destroy();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -23,8 +32,20 @@
     <body>
         <nav>
             <a href="#" class="current_page">HOME</a>
-            <a href="login.html">LOGIN</a>
-            <a href="signup.html">NOVA CONTA</a>
+            <?php
+                if($isLoggedIn) {
+                    echo "<a href=''>NOVO ANÚNCIO</a>";
+                    echo "<a href=''>MEUS ANÚNCIOS</a>";
+                    echo "<a href=''>MENSAGENS</a>";
+                    echo "<a href=''>NOVO ANÚNCIO</a>";
+                    echo "<a href=''>MINHA CONTA</a>";
+                    echo "<a href='logout.php'>SAIR</a>";
+                }
+                else {
+                    echo "<a href='../html/login.html'>LOGIN</a>";
+                    echo "<a href='../html/signup.html'>NOVA CONTA</a>";
+                }
+            ?>
         </nav>
         <header>
             <div id="header_div">

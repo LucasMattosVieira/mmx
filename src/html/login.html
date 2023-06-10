@@ -18,7 +18,7 @@
   </head>
   <body>
     <nav>
-      <a href="home.html">HOME</a>
+      <a href="../php/home.php">HOME</a>
       <a href="login.html" class="current_page">LOGIN</a>
       <a href="signup.html">NOVA CONTA</a>
     </nav>
@@ -47,21 +47,21 @@
       <div>
         <h2>Login</h2>
 
-        <form action="../php/login.php" method="post">
+        <form action="../php/login.php" method="post" id="loginForm">
           <div>
             <input type="email" name="email" id="email" placeholder="E-mail" >
           </div>
 
           <div>
             <input
-              type="text"
+              type="password"
               name="password"
               id="password"
               placeholder="Senha"
             >
           </div>
 
-          <button>LOGIN</button>
+          <button>ENTRAR</button>
         </form>
       </div>
     </main>
