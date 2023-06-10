@@ -303,3 +303,21 @@ input.error,
 select.error { 
   border-bottom-color: rgb(255, 97, 97);
 }
+
+
+input[type="file"] {
+  display: none;
+}
+
+#fileLabel {
+  padding: 11px;
+  color: #fff;
+  background-color: #222;
+  display: inline-block;
+  margin-top: 28px;
+  width: 320px;
+  height: 40px;
+  border: none;
+  font-size: 14;
+  cursor: pointer;
+}

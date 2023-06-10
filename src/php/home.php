@@ -16,7 +16,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script defer src="../js/script.js"></script>
+        
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,10 +34,9 @@
             <a href="#" class="current_page">HOME</a>
             <?php
                 if($isLoggedIn) {
-                    echo "<a href=''>NOVO ANÚNCIO</a>";
+                    echo "<a href='createAd.php'>NOVO ANÚNCIO</a>";
                     echo "<a href=''>MEUS ANÚNCIOS</a>";
                     echo "<a href=''>MENSAGENS</a>";
-                    echo "<a href=''>NOVO ANÚNCIO</a>";
                     echo "<a href='account.php'>MINHA CONTA</a>";
                     echo "<a href='logout.php'>SAIR</a>";
                 }
@@ -111,5 +110,8 @@
         <footer>
             © 2023 BY SADDEVS INC. ALL RIGHTS RESERVED.
         </footer>
+
+        <script src="../js/script.js"></script>
+        <script src="../js/categories.js"></script>
     </body>
 </html>
