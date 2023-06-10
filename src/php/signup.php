@@ -1,9 +1,8 @@
 <?php
-
     require_once "mySQLConnect.php";
 
     $pdo = mysqlConnect();
-
+    
     $name = $_POST["name"] ?? "";
     $cpf = $_POST["cpf"] ?? "";
     $tel = $_POST["tel"] ?? "";

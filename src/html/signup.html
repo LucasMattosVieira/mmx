@@ -11,6 +11,7 @@
  
      <!-- Styles -->
      <link rel="stylesheet" href="../css/components/footer.css" >
+     <link rel="stylesheet" href="../css/utils/loading.css" >
      <link rel="stylesheet" href="../css/global/style.css" >
      <link rel="stylesheet" href="../css/style.css" >
      
@@ -22,6 +23,7 @@
       <a href="login.html">LOGIN</a>
       <a href="signup.html" class="current_page">NOVA CONTA</a>
     </nav>
+
     <header>
       <div id="header_div">
         <img
@@ -29,10 +31,12 @@
           alt="Logo rectangles 1"
           id="logo_img1"
         >
+
         <div id="logo_div">
           <h1 id="logo">MMX</h1>
           <h5 id="sub_logo">TUDO AO SEU ALCANCE</h5>
         </div>
+
         <img
           src="../assets/logo_rect.svg"
           alt="Logo rectangles 2"
@@ -40,24 +44,26 @@
         >
       </div>
     </header>
+
     <main>
       <div>
         <h2>Nova conta</h2>
+
         <form action="../php/signup.php" method="post" id="signupForm">
           <div>
-            <input type="text" name="name" id="name" placeholder="Nome" >
+            <input type="text" name="name" id="name" placeholder="Nome" required>
           </div>
 
           <div>
-            <input type="text" name="cpf" id="cpf" placeholder="CPF" >
+            <input type="text" name="cpf" id="cpf" placeholder="CPF" required>
           </div>
 
           <div>
-            <input type="text" name="tel" id="tel" placeholder="Telefone" >
+            <input type="text" name="tel" id="tel" placeholder="Telefone" required>
           </div>
 
           <div>
-            <input type="email" name="email" id="email" placeholder="E-mail" >
+            <input type="email" name="email" id="email" placeholder="E-mail" required>
           </div>
 
           <div>
@@ -66,10 +72,15 @@
               name="password"
               id="password"
               placeholder="Senha"
+              required
             >
           </div>
 
-          <button>CRIAR CONTA</button>
+          <ul id="errors"></ul>
+
+          <button id="btnSubmit">
+            CRIAR CONTA
+          </button>
         </form>
       </div>
     </main>
