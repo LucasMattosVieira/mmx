@@ -53,10 +53,10 @@
               echo "<a href=''>MEUS ANÚNCIOS</a>";
               echo "<a href=''>MENSAGENS</a>";
               echo "<a href='account.php'>MINHA CONTA</a>";
-              echo "<a href='logout.php'>SAIR</a>";
+              echo "<a href='../php/logout.php'>SAIR</a>";
           } else {
-              echo "<a href='../html/login.html'>LOGIN</a>";
-              echo "<a href='../html/signup.html'>NOVA CONTA</a>";
+              echo "<a href='login.php'>LOGIN</a>";
+              echo "<a href='account.php'>NOVA CONTA</a>";
           }
       ?>
     </nav>

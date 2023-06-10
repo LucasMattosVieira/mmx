@@ -28,7 +28,7 @@
             <a href="">MEUS ANÚNCIOS</a>
             <a href="">MENSAGENS</a>
             <a href="account.php">MINHA CONTA</a>
-            <a href="logout.php">SAIR</a>
+            <a href="../php/logout.php">SAIR</a>
         </nav>
 
         <header>
