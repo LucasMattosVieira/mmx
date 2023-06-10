@@ -138,66 +138,6 @@ nav > a {
 
 /* filtros vv */
 
-#simple_filter,
-#advanced_filter {
-  /* position: absolute;
-  max-width: 320px;
-  */
-  margin-left: 60px;
-  float: left;
-  width: max-content;
-}
-
-#simple_filter > h2,
-#advanced_filter > h2 {
-  margin-bottom: 0;
-}
-
-.filter_btn {
-  margin-top: 0;
-  font-size: 8px;
-  max-width: 60px;
-  max-height: 14px;
-}
-
-.price {
-  max-width: 154px;
-}
-
-#min_price {
-  margin-right: 7px;
-}
-
-#start_search,
-#no_results {
-  float: left;
-  width: 54.2%;
-  margin-top: 56px;
-  margin-bottom: 200px;
-}
-
-#search_img, 
-#error_img {
-  max-width: 234px;
-  width: 100%;
-  height: auto;
-}
-
-#search_sub, 
-#error_sub {
-  font-size: 14px;
-  font-weight: 300;
-  color: #222;
-  border-top: 8px solid #222;
-  max-width: 234px;
-  margin: 8.5px auto;
-  padding: 0.75rem;
-}
-
-#error_sub {
-  margin-top: -16px;
-}
-
 /*  */
 
 .preco {
@@ -248,20 +188,6 @@ nav > a {
   margin-left: 25px;
 }
 
-@media screen and (max-width: 1525px) {
-  #simple_filter,
-  #advanced_filter {
-    float: none;
-    margin: 0 auto;
-  }
-
-  #cards {
-    max-width: 750px;
-    margin: 0 auto;
-    float: none;
-  }
-}
-
 .card img {
   width: 100%;
 }
@@ -273,7 +199,8 @@ a {
 
 /* Forms */
 
-form {
+#loginForm,
+#signupForm {
   width: 100%;
   max-width: 20rem;
   margin: 0 auto;

@@ -1,0 +1,91 @@
+.content {
+  position: relative;
+  margin: 0 auto;
+  max-width: 49.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Filters */
+
+.filters {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20rem;
+  transform: translateX(-100%);
+}
+
+#simple_filter,
+#advanced_filter {
+  display: inline-block;
+  width: 100%;
+  /* margin-left: 60px; */
+}
+
+#simple_filter > h2,
+#advanced_filter > h2 {
+  margin-bottom: 0;
+}
+
+.filter_btn {
+  margin-top: 0;
+  font-size: 0.625rem;
+  padding: 0.25rem 0.5rem;
+  width: max-content;
+  height: max-content;
+}
+
+.price {
+  max-width: 154px;
+}
+
+#min_price {
+  margin-right: 7px;
+}
+
+#start_search,
+#no_results {
+  display: inline-block;
+  /* float: left;
+  width: 54.2%; */
+  margin-top: 56px;
+  margin-bottom: 200px;
+}
+
+#search_img, 
+#error_img {
+  max-width: 234px;
+  width: 100%;
+  height: auto;
+}
+
+#search_sub, 
+#error_sub {
+  font-size: 14px;
+  font-weight: 300;
+  color: #222;
+  border-top: 8px solid #222;
+  max-width: 234px;
+  margin: 8.5px auto;
+  padding: 0.75rem;
+}
+
+#error_sub {
+  margin-top: -16px;
+}
+
+@media screen and (max-width: 91.75rem) {
+  .filters {
+    position: initial;
+    transform: none;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  #cards {
+    max-width: 750px;
+    margin: 0 auto;
+    float: none;
+  }
+}

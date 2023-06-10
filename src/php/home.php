@@ -25,6 +25,7 @@
         <!-- Styles -->
         <link rel="stylesheet" href="../css/components/footer.css" >
         <link rel="stylesheet" href="../css/global/style.css" >
+        <link rel="stylesheet" href="../css/pages/home.css" >
         <link rel="stylesheet" href="../css/style.css" >
 
         <title>MMX - Tudo ao seu alcance</title>
@@ -46,53 +47,59 @@
                 }
             ?>
         </nav>
+
         <header>
             <div id="header_div">
                 <img src="../assets/logo_rect.svg" alt="Logo rectangles 1" id="logo_img1" class="logo_rects">
+                
                 <div id="logo_div">
                     <h1 id="logo">MMX</h1>
                     <h5 id="sub_logo">TUDO AO SEU ALCANCE</h5>
                 </div>
+                
                 <img src="../assets/logo_rect.svg" alt="Logo rectangles 2" id="logo_img2" class="logo_rects">
             </div>
         </header>
 
-        <main>
-            <div id="simple_filter">
-                <h2>Filtro</h2>
-                <button type="button" id="setAdvanced" class="filter_btn">SIMPLES</button>
-
-                <form action="" id="simpleForm">
-                    <div>
-                        <input type="text" name="title" id="title" placeholder="Título">
-                    </div>
-                    
-                    <button>PESQUISAR</button>
-                </form>
-            </div>
-
-            <div id="advanced_filter">
-                <h2>Filtro</h2>
-                <button type="button" id="setSimple" class="filter_btn">AVANÇADO</button>
-
-                <form action="" id="advForm">
-                    <div>
-                        <input type="text" name="title" id="title" placeholder="Título">
-                    </div>
-                    <div>
-                        <input type="text" name="description" id="description" placeholder="Descrição">
-                    </div>
-                    <div>
-                        <select name="category" id="category">
-                            <option value="" disabled selected>Categoria</option>
-                        </select>
-                    </div>
-                    <div>
-                        <input type="text" name="min_price" id="min_price" class="price" placeholder="Preço mínimo">
-                        <input type="text" name="max_price" id="max_price" class="price" placeholder="Preço máximo">
-                    </div>
-                    <button>PESQUISAR</button>
-                </form>
+        <main class="content">
+            <div class="filters">
+                <div id="simple_filter">
+                    <h2>Filtro</h2>
+    
+                    <button type="button" id="setAdvanced" class="filter_btn">SIMPLES</button>
+    
+                    <form action="" id="simpleForm">
+                        <div>
+                            <input type="text" name="title" id="title" placeholder="Título">
+                        </div>
+                        
+                        <button>PESQUISAR</button>
+                    </form>
+                </div>
+    
+                <div id="advanced_filter">
+                    <h2>Filtro</h2>
+                    <button type="button" id="setSimple" class="filter_btn">AVANÇADO</button>
+    
+                    <form action="" id="advForm">
+                        <div>
+                            <input type="text" name="title" id="title" placeholder="Título">
+                        </div>
+                        <div>
+                            <input type="text" name="description" id="description" placeholder="Descrição">
+                        </div>
+                        <div>
+                            <select name="category" id="category">
+                                <option value="" disabled selected>Categoria</option>
+                            </select>
+                        </div>
+                        <div>
+                            <input type="text" name="min_price" id="min_price" class="price" placeholder="Preço mínimo">
+                            <input type="text" name="max_price" id="max_price" class="price" placeholder="Preço máximo">
+                        </div>
+                        <button>PESQUISAR</button>
+                    </form>
+                </div>
             </div>
 
             <div id="start_search">
