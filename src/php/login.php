@@ -30,7 +30,7 @@
         session_start();
         $_SESSION["userID"] = $result["Codigo"];
 
-        header("Location: home.php");
+        header("Location: ../pages/home.php");
         exit();
         
     } else {

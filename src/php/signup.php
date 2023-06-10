@@ -53,6 +53,6 @@
     session_start();
     $_SESSION["userID"] = $userID;
 
-    header("Location: home.php");
+    header("Location: ../pages/home.php");
     exit();
 ?>
