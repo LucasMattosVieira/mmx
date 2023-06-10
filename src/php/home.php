@@ -38,7 +38,7 @@
                     echo "<a href=''>MEUS ANÚNCIOS</a>";
                     echo "<a href=''>MENSAGENS</a>";
                     echo "<a href=''>NOVO ANÚNCIO</a>";
-                    echo "<a href=''>MINHA CONTA</a>";
+                    echo "<a href='account.php'>MINHA CONTA</a>";
                     echo "<a href='logout.php'>SAIR</a>";
                 }
                 else {
