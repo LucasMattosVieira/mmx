@@ -8,6 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="../js/endereco.js"></script>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,6 +22,12 @@
     <title>MMX - Tudo ao seu alcance</title>
 </head>
 <body>
+    <nav>
+        <a href="../php/home.php">TODOS ANUNCIOS</a>
+        <a href="login.html" class="current_page">LOGIN</a>
+        <a href="signup.html">NOVA CONTA</a>
+      </nav>
+
     <header>
         <div id="header_div">
             <img
@@ -39,6 +46,103 @@
             >
         </div>
     </header>
+
+    <main>
+        <div>
+          <h2>Novo Anuncio</h2>
+
+    
+
+                <form action="../php/imagem.php" method="POST" enctype="multipart/form-data" id="formE">
+
+                    <button type="submit">ADICIONAR IMAGEM</button>
+                    <div>
+                        <input type="file" id="imagem" name="imagem" accept="image/*" placeholder="imagem.jpg">
+                    </div>
+                   
+                </form>
+             
+         
+
+          <form action="../php/ad.php" method="post" id="signupForm">
+
+           
+            <div>
+              <input type="text" name="titulo" id="titulo" placeholder="Titulo" >
+            </div>
+  
+            <div>
+              <input type="text" name="descricao" id="descricao" placeholder="Descrição" >
+            </div>
+
+            <div>
+                <select name="category" id="category">
+                    <option value="" disabled selected>Categoria</option>
+                    <option value="eletronics">Eletrôncios</option>
+                    <option value="cars">Carros</option>
+                    <option value="houses">Imóveis</option>
+                    <option value="clothes">Vestuario</option>
+                    <option value="others">outros</option>
+                </select>
+            </div>
+  
+            <div>
+              <input type="number" name="preco" id="preco" placeholder="Preço" >
+            </div>
+
+
+            <div>
+                <input type="text" name="cep" id="cep" placeholder="CEP" >
+              </div>
+
+
+              <div>
+                <input type="text" name="bairro" id="bairro" placeholder="Bairro" >
+              </div>
+
+              <div>
+                <input type="text" name="cidade" id="cidade" placeholder="Cidade" >
+              </div>
+
+              <div>
+                <select name="estado" id="estado">
+                    <option value="" disabled selected>Estado</option>
+                    <option value="AC">AC</option>
+                    <option value="AL">AL</option>
+                    <option value="AM">AM</option>
+                    <option value="AP">AP</option>
+                    <option value="BA">BA</option>
+                    <option value="CE">CE</option>
+                    <option value="DF">DF</option>
+                    <option value="ES">ES</option>
+                    <option value="GO">GO</option>
+                    <option value="MA">MA</option>
+                    <option value="MG">MG</option>
+                    <option value="MT">MT</option>
+                    <option value="MS">MS</option>
+                    <option value="SP">SP</option>
+                    <option value="SE">SE</option>
+                    <option value="SC">SC</option>
+                    <option value="PR">PR</option>
+                    <option value="PA">PA</option>
+                    <option value="PB">PB</option>
+                    <option value="PE">PE</option>
+                    <option value="PI">PI</option>
+                    <option value="RJ">RJ</option>
+                    <option value="RR">RR</option>
+                    <option value="RO">RO</option>
+                    <option value="RN">RN</option>
+                    <option value="RS">RS</option>
+                    <option value="TO">TO</option>
+                </select>
+            </div>
+  
+              
+  
+            <button type="submit">PUBLICAR</button>
+          </form>
+        </div>
+      </main>
 
 
 
