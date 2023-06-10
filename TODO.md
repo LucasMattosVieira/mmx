@@ -1,0 +1,35 @@
+# TODO
+
+- [x] Login
+- [x] Logout
+- [ ] Busca simples
+- [ ] Busca avançada
+- [ ] Cadastro de anúncio
+- [ ] Listar anúncios (na Home)
+- [ ] Ajustar página do anúncio
+- [ ] Deixar projeto responsivo
+      - [ ] Login
+      - [ ] Home
+      - [ ] Cadastro de anunciante
+      - [ ] Cadastro de anúncio
+      - [ ] Visualização de anúncio
+      - [ ] 
+- [ ] Registro de interesse
+- [ ] 
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
