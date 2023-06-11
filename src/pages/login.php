@@ -19,8 +19,8 @@
   <body>
     <nav>
       <a href="home.php">HOME</a>
-      <a href="login.html" class="current_page">LOGIN</a>
-      <a href="signup.html">NOVA CONTA</a>
+      <a href="#" class="current_page">LOGIN</a>
+      <a href="account.php">NOVA CONTA</a>
     </nav>
 
     <header>

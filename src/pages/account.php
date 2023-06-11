@@ -47,16 +47,17 @@
   </head>
   <body>
     <nav>
+      <a href="home.php">HOME</a>
       <?php
           if(isset($id)) {
               echo "<a href='createAd.php'>NOVO ANÚNCIO</a>";
               echo "<a href=''>MEUS ANÚNCIOS</a>";
               echo "<a href=''>MENSAGENS</a>";
-              echo "<a href='account.php'>MINHA CONTA</a>";
+              echo "<a href='#' class='current_page'>MINHA CONTA</a>";
               echo "<a href='../php/logout.php'>SAIR</a>";
           } else {
               echo "<a href='login.php'>LOGIN</a>";
-              echo "<a href='account.php'>NOVA CONTA</a>";
+              echo "<a href='#' class='current_page'>NOVA CONTA</a>";
           }
       ?>
     </nav>
@@ -127,7 +128,7 @@
               id="email" 
               placeholder="E-mail" 
               value="<?php echo $email ?>"
-              disabled="<?php echo isset($id) ?>"
+              <?php echo isset($id) ? "disabled" : "" ?>
               required
             >
             </div>
