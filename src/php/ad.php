@@ -8,19 +8,16 @@
     $userID = $_SESSION["userID"];
 
     $targetDir = "../images/";
-    $targetFile = $targetDir . basename($_FILES["imagem"]["name"]);
+    $targetFile = $targetDir . basename($_FILES["image"]["name"]);
 
     if(isset($_POST["submit"])) {
-        $check = getimagesize($_FILES["imagem"]["tmp_name"]);
+        $check = getimagesize($_FILES["image"]["tmp_name"]);
         if($check === false) {
             throw new Exception("Arquivo não é uma imagem");
         }
     }
 
-    if (move_uploaded_file($_FILES["imagem"]["tmp_name"], $targetFile)) {
-        echo "Sucesso.";
-    } 
-    else {
+    if (!move_uploaded_file($_FILES["image"]["tmp_name"], $targetFile)) {
         throw new Exception("Upload falhou.");
     }
 
@@ -28,12 +25,14 @@
     $bairro = $_POST['bairro'] ?? '';
     $cidade = $_POST['cidade'] ?? '';
     $estado = $_POST['estado'] ?? '';
-    $categoria = $_POST['categoria'] ?? '';
-    $descricao = $_POST['descricao'] ?? '';
-    $titulo = $_POST['titulo'] ?? '';
-    $preco = $_POST['preco'] ?? '';
-    $imagem = basename($_FILES["imagem"]["name"]);
+    $categoria = $_POST['category'] ?? '';
+    $descricao = $_POST['descr'] ?? '';
+    $titulo = $_POST['title'] ?? '';
+    $preco = $_POST['price'] ?? '';
+    $image = basename($_FILES["image"]["name"]);
  
+    $categoria = (int)$categoria;
+
     $sql1 = <<<SQL
         INSERT INTO Anuncio (Titulo, Descricao, Preco, CEP, Bairro, Cidade,
                             Estado, CodCategoria, CodAnunciante)
@@ -52,7 +51,7 @@
     $adID = $pdo->lastInsertId();
 
     $stmt = $pdo->prepare($sql2);
-    $stmt->execute([$adID,$imagem]);
+    $stmt->execute([$adID,$image]);
 
     # adiciona o cep se nao estiver salvo
     $sql3 = <<<SQL
@@ -74,7 +73,7 @@
         $stmt->execute([$cep,$bairro,$cidade,$estado]);
     }
 
-    header("Location: createAd.php");
+    header("Location: ../pages/createAd.php");
     exit();
 
 ?>

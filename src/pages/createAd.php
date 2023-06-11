@@ -73,16 +73,16 @@
                 <form action="../php/ad.php" method="post" id="createAdForm" enctype="multipart/form-data">
 
                     <div>
-                        <label for="imagem" id="fileLabel">ADICIONAR IMAGEM</label>
-                        <input type="file" id="imagem" name="imagem" accept="image/*">
+                        <label for="image" id="fileLabel">ADICIONAR IMAGEM</label>
+                        <input type="file" id="image" name="image" accept="image/*">
                     </div>
 
                     <div>
-                    <input type="text" name="titulo" id="titulo" placeholder="Título" >
+                    <input type="text" name="title" id="title" placeholder="Título" >
                     </div>
         
                     <div>
-                    <input type="text" name="descricao" id="descricao" placeholder="Descrição" >
+                    <input type="text" name="descr" id="descr" placeholder="Descrição" >
                     </div>
 
                     <div>
@@ -92,7 +92,7 @@
                     </div>
         
                     <div>
-                    <input type="number" name="preco" id="preco" placeholder="Preço" >
+                    <input type="number" name="price" id="price" placeholder="Preço" >
                     </div>
 
 
