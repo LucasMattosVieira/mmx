@@ -137,7 +137,7 @@ function NewResults(ads) {
                             `<p class="descricao">${ads[i]["descr"]}</p>` +
                             `<p class="preco">${price.format(ads[i]["price"])}</p>` +
                             `</div>`;
-        newCard.href = `../php/ad.php?id=${ads[i]["code"]}`;
+        newCard.href = `../pages/ad.php?id=${ads[i]["code"]}`;
         cardDiv.appendChild(newCard);
     }
     

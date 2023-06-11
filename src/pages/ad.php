@@ -1,3 +1,44 @@
+<?php
+    require_once "../php/mySQLConnect.php";
+
+    $pdo = mysqlConnect();
+
+    session_start();
+
+    $userID = $_SESSION["userID"];
+    $adID = $_GET["id"];
+
+    try {
+      $sql = <<<SQL
+          SELECT *
+          FROM Anuncio
+          WHERE Codigo = ?
+          SQL;
+  
+      $stmt = $pdo->prepare($sql);
+      $stmt->execute([$adID]);
+  
+      $data = $stmt->fetch();
+    } catch(Exception $error) {
+      throw new Exception("Erro ao tentar acessar anúncio.");
+    }
+
+    try {
+      $sql = <<<SQL
+          SELECT Nome
+          FROM Anunciante
+          WHERE Codigo = ?
+          SQL;
+  
+      $stmt = $pdo->prepare($sql);
+      $stmt->execute([$data["CodAnunciante"]]);
+  
+      $advertiser = $stmt->fetch();
+    } catch(Exception $error) {
+      throw new Exception("Erro ao tentar acessar anúncio.");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
@@ -20,9 +61,19 @@
   </head>
   <body>
     <nav>
-      <a href="home.html" class="current_page">HOME</a>
-      <a href="login.html">LOGIN</a>
-      <a href="signup.html">NOVA CONTA</a>
+      <?php
+          if(isset($userID)) {
+              echo "<a href='home.php'>HOME</a>";
+              echo "<a href='createAd.php'>NOVO ANÚNCIO</a>";
+              echo "<a href=''>MEUS ANÚNCIOS</a>";
+              echo "<a href=''>MENSAGENS</a>";
+              echo "<a href='#' class='current_page'>MINHA CONTA</a>";
+              echo "<a href='../php/logout.php'>SAIR</a>";
+          } else {
+              echo "<a href='login.php'>LOGIN</a>";
+              echo "<a href='#' class='current_page'>NOVA CONTA</a>";
+          }
+      ?>
     </nav>
 
     <header>
@@ -48,9 +99,7 @@
 
     <main>
       <aside>
-        <p class="price">
-          R$ 1.234,<span>56</span>
-        </p>
+        <p id="price" class="price"></p>
 
         <div class="carousel">
           <button type="button" id="previous">
@@ -65,29 +114,25 @@
         </div>
 
         <address>
-          00.000-000
+          <?php echo $data["CEP"] ?>
           <br>
-          Bairro
+          <?php echo $data["Bairro"] ?>
           <br>
-          Cidade
+          <?php echo $data["Cidade"] ?>
           <br>
-          Estado          
+          <?php echo $data["Estado"] ?>
         </address>
       </aside>
 
       <section>
         <h2>
-          Pôster
+          <?php echo $data["Titulo"] ?>
         </h2>
         
-        <h3>
-          03/04/2024 às 06h04min por Mickey Mouse
-        </h3>
-
+        <h3 id="metadata"></h3>
+        
         <p>
-          Texto teste. Texto teste. Texto teste. Texto teste. Texto teste. Texto teste. Texto teste. Texto teste. Texto teste. Texto teste. Texto teste. Texto teste. Texto teste. Texto teste. Texto teste. Texto teste. Texto teste. Texto teste. Texto teste. Texto teste. Texto teste. Texto teste. Texto teste. Texto teste. Texto teste. Texto teste. Texto teste. Texto teste. 
-          <br>
-          Texto teste. Texto teste. Texto teste. Texto teste. Texto teste. Texto teste. Texto teste. Texto teste. Texto teste. Texto teste. Texto teste. Texto teste. Texto teste. Texto teste. 
+          <?php echo $data["Descricao"] ?>
         </p>
       </section>
     </main>
@@ -95,5 +140,21 @@
     <footer>
       © 2023 by SadDevs Corp. All rights reserved.
     </footer>
+
+    <script>
+      const metadata = document.getElementById("metadata");
+      const date = new Date('<?php echo $data["DataHora"] ?>');
+      metadata.textContent = `${`${date.getDate()}`.padStart(2, "0")}/${`${date.getMonth() + 1}`.padStart(2, "0")}/${date.getFullYear()} às ${`${date.getHours()}`.padStart(2, "0")}h${`${date.getMinutes()}`.padStart(2, "0")}min por <?php echo $advertiser["Nome"] ?>`
+    
+      const priceTag = document.getElementById("price");
+      const price = Number('<?php echo $data["Preco"]?>');
+      let formattedIntValue = Math.floor(price).toString().split("");
+
+      for(let i = price.toString().length - 3 - 3; i > 0; i -= 3) {
+        formattedIntValue.splice(i, 0, ".");
+      }
+
+      priceTag.innerHTML = `R$ ${formattedIntValue.join("")},<span>${((price % 1) * 100).toFixed(0)}</span>`;
+    </script>
   </body>
 </html>
