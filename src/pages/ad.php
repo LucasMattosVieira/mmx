@@ -52,6 +52,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="../css/components/footer.css" >
+    <link rel="stylesheet" href="../css/components/modal.css" >
     <link rel="stylesheet" href="../css/global/style.css" >
     <link rel="stylesheet" href="../css/style.css" >
 
@@ -140,6 +141,28 @@
     <footer>
       © 2023 by SadDevs Corp. All rights reserved.
     </footer>
+
+    <div class="modal">
+      <div class="modalContent">
+        <button type="button" class="btnClose">
+          <svg xmlns:xlink="http://www.w3.org/1999/xlink" width="12.728" xmlns="http://www.w3.org/2000/svg" height="12.728" id="screenshot-89822874-17e9-8064-8002-5ca8174ee628" viewBox="11039.637 2218.137 12.728 12.728" style="-webkit-print-color-adjust: exact;" fill="none" version="1.1"><g id="shape-89822874-17e9-8064-8002-5ca8174ee628"><g class="fills" id="fills-89822874-17e9-8064-8002-5ca8174ee628"><path rx="0" ry="0" d="M11046.001,2223.086L11050.950,2218.137L11052.365,2219.551L11047.415,2224.501L11052.365,2229.450L11050.950,2230.865L11046.001,2225.915L11041.051,2230.865L11039.637,2229.450L11044.586,2224.501L11039.637,2219.551L11041.051,2218.137L11046.001,2223.086ZZ" style="fill: rgb(0, 0, 0);"/></g></g></svg>
+        </button>
+  
+        <h2 class="title">Registrar interesse</h2>
+
+        <form action="">
+          <div>
+            <input type="text" placeholder="Contato">
+          </div>
+  
+          <div>
+            <textarea placeholder="Mensagem"></textarea>          
+          </div>
+  
+          <button>Enviar</button>
+        </form>
+      </div>
+    </div>
 
     <script>
       const metadata = document.getElementById("metadata");
