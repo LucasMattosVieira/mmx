@@ -67,8 +67,8 @@
               echo "<a href='home.php'>HOME</a>";
               echo "<a href='createAd.php'>NOVO ANÚNCIO</a>";
               echo "<a href='myAds.php'>MEUS ANÚNCIOS</a>";
-              echo "<a href=''>MENSAGENS</a>";
-              echo "<a href='#' class='current_page'>MINHA CONTA</a>";
+              echo "<a href='messages.php'>MENSAGENS</a>";
+              echo "<a href='account.php'>MINHA CONTA</a>";
               echo "<a href='../php/logout.php'>SAIR</a>";
           } else {
               echo "<a href='login.php'>LOGIN</a>";

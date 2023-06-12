@@ -147,7 +147,7 @@
             </div>
         </main>
 
-        <footer>© 2023 BY SADDEVS INC. ALL RIGHTS RESERVED.</footer>
+        <footer>© 2023 BY SADDEVS INC.</footer>
 
         <script src="../js/address.js"></script>
         <script src="../js/categories.js"></script>

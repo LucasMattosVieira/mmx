@@ -52,7 +52,7 @@
           if(isset($id)) {
               echo "<a href='createAd.php'>NOVO ANÚNCIO</a>";
               echo "<a href='myAds.php'>MEUS ANÚNCIOS</a>";
-              echo "<a href=''>MENSAGENS</a>";
+              echo "<a href='messages.php'>MENSAGENS</a>";
               echo "<a href='#' class='current_page'>MINHA CONTA</a>";
               echo "<a href='../php/logout.php'>SAIR</a>";
           } else {
@@ -152,7 +152,7 @@
       </div>
     </main>
 
-    <footer>© 2023 BY SADDEVS INC. ALL RIGHTS RESERVED.</footer>
+    <footer>© 2023 BY SADDEVS INC.</footer>
 
     <script src="../js/account.js"></script>
   </body>

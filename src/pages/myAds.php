@@ -61,7 +61,7 @@
             <div id="cards"></div>
         </main>
         <footer>
-            © 2023 BY SADDEVS INC. ALL RIGHTS RESERVED.
+            © 2023 BY SADDEVS INC.
         </footer>
 
         <script src="../js/fetchMyAds.js"></script>

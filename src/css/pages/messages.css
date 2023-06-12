@@ -1,0 +1,52 @@
+main {
+  position: relative;
+  margin: 0 auto;
+  max-width: 49.75rem;
+  padding: 3.75rem 1rem;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  text-transform: uppercase;
+  position: relative;
+  font-weight: 400;
+  margin-left: 20px;
+}
+
+h3::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-1rem, 0);
+  display: block;
+  height: 100%;
+  width: 4px;
+  background-color: #000;
+}
+
+.message {
+  text-align: left;
+}
+
+.message p {
+  color: #bababa;
+  margin-bottom: 1rem;
+  margin-left: 20px;
+}
+
+button {
+  margin: 0 0 2rem;
+}
+
+button {
+  height: 4px;
+}
+
+.message:hover button {
+height: 40px;
+}

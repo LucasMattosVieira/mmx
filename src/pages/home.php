@@ -37,7 +37,7 @@
                 if($isLoggedIn) {
                     echo "<a href='createAd.php'>NOVO ANÚNCIO</a>";
                     echo "<a href='myAds.php'>MEUS ANÚNCIOS</a>";
-                    echo "<a href=''>MENSAGENS</a>";
+                    echo "<a href='messages.php'>MENSAGENS</a>";
                     echo "<a href='account.php'>MINHA CONTA</a>";
                     echo "<a href='../php/logout.php'>SAIR</a>";
                 }
@@ -115,7 +115,7 @@
             <div id="cards"></div>
         </main>
         <footer>
-            © 2023 BY SADDEVS INC. ALL RIGHTS RESERVED.
+            © 2023 BY SADDEVS INC.
         </footer>
 
         <script src="../js/script.js"></script>
