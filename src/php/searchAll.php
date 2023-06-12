@@ -24,9 +24,10 @@
         SELECT Codigo, Titulo, Descricao, Preco, NomeArqFoto
         FROM Anuncio, Foto
         WHERE CodAnuncio = Codigo
+        GROUP BY Codigo
         LIMIT 6 OFFSET ?
         SQL;
-    
+
     $offset = $_GET["offset"] * 6;
 
     $stmt = $pdo->prepare($sql);

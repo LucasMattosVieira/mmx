@@ -74,7 +74,7 @@
 
                     <div>
                         <label for="image" id="fileLabel">ADICIONAR IMAGEM</label>
-                        <input type="file" id="image" name="image" accept="image/*">
+                        <input type="file" id="image" name="image[]" accept="image/*" multiple>
                     </div>
 
                     <div>

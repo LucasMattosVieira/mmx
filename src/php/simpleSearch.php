@@ -29,6 +29,7 @@
             Titulo LIKE ? AND
             Titulo LIKE ? AND
             Titulo LIKE ?
+        GROUP BY Codigo
         LIMIT 6 OFFSET ?
         SQL;
     

@@ -7,20 +7,6 @@
     
     $userID = $_SESSION["userID"];
 
-    $targetDir = "../images/";
-    $targetFile = $targetDir . basename($_FILES["image"]["name"]);
-
-    if(isset($_POST["submit"])) {
-        $check = getimagesize($_FILES["image"]["tmp_name"]);
-        if($check === false) {
-            throw new Exception("Arquivo não é uma imagem");
-        }
-    }
-
-    if (!move_uploaded_file($_FILES["image"]["tmp_name"], $targetFile)) {
-        throw new Exception("Upload falhou.");
-    }
-
     $cep = $_POST['cep'] ?? '';
     $bairro = $_POST['bairro'] ?? '';
     $cidade = $_POST['cidade'] ?? '';
@@ -29,7 +15,6 @@
     $descricao = $_POST['descr'] ?? '';
     $titulo = $_POST['title'] ?? '';
     $preco = $_POST['price'] ?? '';
-    $image = basename($_FILES["image"]["name"]);
  
     $categoria = (int)$categoria;
 
@@ -50,8 +35,56 @@
 
     $adID = $pdo->lastInsertId();
 
+    $targetDir = "../images/";
+    $images = [];
+    $uploaded = $_FILES["image"];
+
+    if(isset($_POST["title"])) {  
+        
+        // $count = count($uploaded["name"]);
+
+        // for($i = 0; $i < $count; $i++){
+
+        //     $imageName = $uploaded["name"][$i];
+
+        //     $targetFile = $targetDir . $imageName;
+
+        //     move_uploaded_file($uploaded["tmp_name"][$i], $targetFile);
+
+        //     array_push($images, $imageName);
+        // }
+
+        foreach($uploaded["name"] as $index=>$file){
+
+            $path = $uploaded["name"][$index];
+            $aux = explode(".",$path);
+            $imageName = "picture_" . $adID . "_" . $index . "." . end($aux);
+
+            $targetFile = $targetDir . $imageName;
+
+            $check = getimagesize($uploaded["tmp_name"][$index]);
+
+            if($check === false) {
+                throw new Exception("Arquivo não é uma imagem");
+            }
+
+            if (!move_uploaded_file($uploaded["tmp_name"][$index], $targetFile)) {
+                throw new Exception("Upload falhou.");
+            }
+
+            $images[] = $imageName;
+        }
+
+
+    }
+
     $stmt = $pdo->prepare($sql2);
-    $stmt->execute([$adID,$image]);
+
+    foreach($images as $image){
+        $stmt->execute([$adID,$image]);
+    }
+
+
 
     # adiciona o cep se nao estiver salvo
     $sql3 = <<<SQL

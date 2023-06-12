@@ -35,6 +35,7 @@
             Descricao LIKE ? AND
             CodCategoria = (CASE WHEN ? > 0 THEN ? ELSE CodCategoria END) AND
             Preco BETWEEN ? AND (CASE WHEN ? != -1 THEN ? ELSE (SELECT MAX(Preco) FROM Anuncio) END)
+        GROUP BY Codigo
         LIMIT 6 OFFSET ?
         SQL;
 
