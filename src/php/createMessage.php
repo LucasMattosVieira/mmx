@@ -17,6 +17,6 @@
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$contato, $mensagem, $adId]);
 
-    header("Location: ../pages/ad.php?id=$adId&messageSent=true");
+    header("Location: ../pages/ad.php?id=${adId}&messageSent=true");
     exit();
 ?>
