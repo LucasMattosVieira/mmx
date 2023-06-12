@@ -130,13 +130,13 @@ function NewResults(ads) {
     for (let i = 0; i < ads.length; i++) {
         let newCard = document.createElement("a");
         let price = new Intl.NumberFormat('pt-BR', {style: 'currency',currency: 'BRL',});
-        newCard.innerHTML = "<div class='card'>" +
-                            `<img src="../images/${ads[i]["picture"]}" onerror="this.onerror=null; this.src='../assets/card.png'"
+        newCard.innerHTML = `<img src="../images/${ads[i]["picture"]}" onerror="this.onerror=null; this.src='../assets/card.png'"
                                 alt="imagem_produto" width="300px">` +
                             `<h1 class="titulo">${ads[i]["titleResult"]}</h1>` +
                             `<p class="descricao">${ads[i]["descr"]}</p>` +
-                            `<p class="preco">${price.format(ads[i]["price"])}</p>` +
-                            `</div>`;
+                            `<p class="preco">${price.format(ads[i]["price"])}</p>` 
+                            ;
+        newCard.classList.add("card");
         newCard.href = `../pages/ad.php?id=${ads[i]["code"]}`;
         cardDiv.appendChild(newCard);
     }
