@@ -43,7 +43,7 @@
 
     try {
       $sql = <<<SQL
-          SELECT Nome
+          SELECT Nome, Codigo
           FROM Anunciante
           WHERE Codigo = ?
           SQL;
@@ -161,13 +161,21 @@
       </section>
 
       <div class="actions">
-        <button type="button">
-          <svg xmlns:xlink="http://www.w3.org/1999/xlink" width="18" xmlns="http://www.w3.org/2000/svg" height="17.971" id="screenshot-89822874-17e9-8064-8002-5c9e2d5a9f41" viewBox="11203 809.919 18 17.971" style="-webkit-print-color-adjust: exact;" fill="none" version="1.1"><g id="shape-89822874-17e9-8064-8002-5c9e2d5a9f41"><g class="fills" id="fills-89822874-17e9-8064-8002-5c9e2d5a9f41"><path rx="0" ry="0" d="M11205.000,825.890L11206.414,825.890L11215.728,816.576L11214.314,815.162L11205.000,824.476L11205.000,825.890ZZM11221.000,827.890L11203.000,827.890L11203.000,823.647L11216.435,810.212C11216.826,809.822,11217.459,809.822,11217.849,810.212L11220.678,813.041C11221.068,813.431,11221.068,814.064,11220.678,814.455L11209.243,825.890L11221.000,825.890L11221.000,827.890ZZM11215.728,813.748L11217.142,815.162L11218.556,813.748L11217.142,812.334L11215.728,813.748ZZ" style="fill: rgb(255, 255, 255);"/></g></g></svg>
-        </button>
-        
-        <button type="button">
-          <svg xmlns:xlink="http://www.w3.org/1999/xlink" width="20" xmlns="http://www.w3.org/2000/svg" height="19.5" id="screenshot-89822874-17e9-8064-8002-5ca639eb6014" viewBox="11202 1793 20 19.5" style="-webkit-print-color-adjust: exact;" fill="none" version="1.1"><g id="shape-89822874-17e9-8064-8002-5ca639eb6014"><g class="fills" id="fills-89822874-17e9-8064-8002-5ca639eb6014"><path rx="0" ry="0" d="M11206.455,1809.000L11202.000,1812.500L11202.000,1794.000C11202.000,1793.448,11202.448,1793.000,11203.000,1793.000L11221.000,1793.000C11221.552,1793.000,11222.000,1793.448,11222.000,1794.000L11222.000,1808.000C11222.000,1808.552,11221.552,1809.000,11221.000,1809.000L11206.455,1809.000ZZM11205.763,1807.000L11220.000,1807.000L11220.000,1795.000L11204.000,1795.000L11204.000,1808.385L11205.763,1807.000ZZM11211.000,1800.000L11213.000,1800.000L11213.000,1802.000L11211.000,1802.000L11211.000,1800.000ZZM11207.000,1800.000L11209.000,1800.000L11209.000,1802.000L11207.000,1802.000L11207.000,1800.000ZZM11215.000,1800.000L11217.000,1800.000L11217.000,1802.000L11215.000,1802.000L11215.000,1800.000ZZ" style="fill: rgb(255, 255, 255);"/></g></g></svg>
-        </button>
+        <?php 
+          if(isset($userID) && $userID == $advertiser["Codigo"]) {
+            echo <<<HTML
+              <button type="button">
+                <img src="../assets/edit.svg" alt="Ícone de edição">
+              </button>
+            HTML;
+          } else if(isset($userID)) {
+            echo <<<HTML
+              <button type="button" onclick="handleToggleModal()">
+                <img src="../assets/message.svg" alt="Ícone de mensagem">
+              </button>
+            HTML;
+          }
+        ?>
       </div>
     </main>
 
@@ -175,27 +183,31 @@
       © 2023 by SadDevs Corp.
     </footer>
 
-    <div class="modal">
+    <div class="modal hidden">
       <div class="modalContent">
-        <button type="button" class="btnClose">
-          <svg xmlns:xlink="http://www.w3.org/1999/xlink" width="12.728" xmlns="http://www.w3.org/2000/svg" height="12.728" id="screenshot-89822874-17e9-8064-8002-5ca8174ee628" viewBox="11039.637 2218.137 12.728 12.728" style="-webkit-print-color-adjust: exact;" fill="none" version="1.1"><g id="shape-89822874-17e9-8064-8002-5ca8174ee628"><g class="fills" id="fills-89822874-17e9-8064-8002-5ca8174ee628"><path rx="0" ry="0" d="M11046.001,2223.086L11050.950,2218.137L11052.365,2219.551L11047.415,2224.501L11052.365,2229.450L11050.950,2230.865L11046.001,2225.915L11041.051,2230.865L11039.637,2229.450L11044.586,2224.501L11039.637,2219.551L11041.051,2218.137L11046.001,2223.086ZZ" style="fill: rgb(0, 0, 0);"/></g></g></svg>
+        <button type="button" class="btnClose" onclick="handleToggleModal()">
+          <img src="../assets/close.svg" alt="Ícone de fechar">
         </button>
   
         <h2 class="title">Registrar interesse</h2>
 
         <form action="">
           <div>
-            <input type="text" placeholder="Contato">
+            <input type="text" placeholder="Contato" name="contato">
           </div>
   
           <div>
-            <textarea placeholder="Mensagem"></textarea>          
+            <textarea placeholder="Mensagem" name="mensagem"></textarea>          
           </div>
+
+          <input type="hidden" value="<?php echo $adID ?>" name="adId">
   
           <button>Enviar</button>
         </form>
       </div>
     </div>
+
+    <script src="../js/ad.js"></script>
 
     <script>
       document.getElementById("previous").addEventListener('click', PreviousImage);

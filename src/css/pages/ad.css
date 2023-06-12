@@ -126,11 +126,11 @@ main > section > p {
     margin: 0;
 }
 
-.actions button:first-child svg {
+.actions button:first-child img {
     transform: translate(0, 0.125rem);
 }
 
-.actions button:last-child svg {
+.actions button:last-child img {
     transform: translate(0, 0.25rem);
 }
 
