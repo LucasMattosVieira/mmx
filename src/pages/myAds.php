@@ -49,6 +49,10 @@
 
         <main class="content">
 
+            <div>
+                <h2>Meus anúncios</h2>
+            </div>
+
             <div id="no_results">
                 <img src="../assets/error.svg" alt="Error image" id="error_img">
                 <h5 id="error_sub">Nenhum anúncio encontrado :(</h5>

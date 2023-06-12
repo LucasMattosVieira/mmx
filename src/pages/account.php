@@ -85,7 +85,7 @@
 
     <main>
       <div>
-        <h2>Nova conta</h2>
+        <h2><?php echo isset($id) ? "Minha conta" : "Nova conta" ?></h2>
 
         <form action="../php/signup.php" method="post" id="signupForm">
           <div>
