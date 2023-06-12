@@ -9,7 +9,7 @@ const errorSVG = document.getElementById("no_results");
 
 const cardDiv = document.getElementById("cards");
 
-let currentForm = simpleForm;
+let currentForm = null;
 let currentResultOffset = 0;
 let searchOff = true;
 
@@ -45,7 +45,7 @@ advancedForm.addEventListener('submit',(e) => {
 function CheckEnd() {
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
         // console.log("Fim da pagina");
-        SearchResults();
+        currentForm == null ? FetchAllAds() : SearchResults();
     }
 }
 

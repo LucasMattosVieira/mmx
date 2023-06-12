@@ -36,7 +36,7 @@
             <?php
                 if($isLoggedIn) {
                     echo "<a href='createAd.php'>NOVO ANÚNCIO</a>";
-                    echo "<a href=''>MEUS ANÚNCIOS</a>";
+                    echo "<a href='myAds.php'>MEUS ANÚNCIOS</a>";
                     echo "<a href=''>MENSAGENS</a>";
                     echo "<a href='account.php'>MINHA CONTA</a>";
                     echo "<a href='../php/logout.php'>SAIR</a>";

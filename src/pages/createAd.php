@@ -32,7 +32,7 @@
         <nav>
             <a href="home.php">HOME</a>
             <a href="#" class="current_page">NOVO ANÚNCIO</a>
-            <a href="">MEUS ANÚNCIOS</a>
+            <a href="myAds.php">MEUS ANÚNCIOS</a>
             <a href="">MENSAGENS</a>
             <a href="account.php">MINHA CONTA</a>
             <a href="../php/logout.php">SAIR</a>
