@@ -191,7 +191,7 @@
   
         <h2 class="title">Registrar interesse</h2>
 
-        <form action="">
+        <form action="../php/createMessage.php">
           <div>
             <input type="text" placeholder="Contato" name="contato">
           </div>
@@ -200,8 +200,6 @@
             <textarea placeholder="Mensagem" name="mensagem"></textarea>          
           </div>
 
-          <input type="hidden" value="<?php echo $adID ?>" name="adId">
-  
           <button>Enviar</button>
         </form>
       </div>
