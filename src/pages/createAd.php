@@ -151,5 +151,6 @@
 
         <script src="../js/address.js"></script>
         <script src="../js/categories.js"></script>
+        <script src="../js/createAd.js"></script>
     </body>
 </html>

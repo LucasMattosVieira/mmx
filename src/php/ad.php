@@ -106,7 +106,7 @@
         $stmt->execute([$cep,$bairro,$cidade,$estado]);
     }
 
-    header("Location: ../pages/createAd.php");
+    header("Location: ../pages/myAds.php");
     exit();
 
 ?>

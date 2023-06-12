@@ -1,9 +1,8 @@
-.content {
+main {
   position: relative;
   margin: 0 auto;
   max-width: 49.75rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 3.75rem 1rem;
 }
 
 /* Filters */
@@ -111,19 +110,21 @@
 .card {
   position: relative;
   display: inline-block;
-  width: 300px;
-  height: 405px;
+  /* width: 300px; */
+  width: 234px;
+  height: 340px;
   border: 3px solid black;
-  margin: 25px;
+  /* margin: 25px; */
+  margin: 8px;
 }
 
 #cards {
   /* margin: 0 auto; */
   float: left;
-  padding-top: 60px;
+  /* padding-top: 60px; */
   max-width: 1100px;
   width: 100%;
-  margin-left: 25px;
+  /* margin-left: 25px; */
 }
 
 .card img {
@@ -142,7 +143,12 @@
 
   #cards {
     max-width: 750px;
-    margin: 0 auto;
+    margin: 2rem auto 0;
     float: none;
+  }
+
+  #simple_filter > h2,
+  #advanced_filter > h2 {
+    margin-top: 0;
   }
 }

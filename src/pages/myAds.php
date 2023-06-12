@@ -20,6 +20,7 @@
         <link rel="stylesheet" href="../css/components/footer.css" >
         <link rel="stylesheet" href="../css/global/style.css" >
         <link rel="stylesheet" href="../css/pages/home.css" >
+        <link rel="stylesheet" href="../css/pages/myAds.css" >
         <link rel="stylesheet" href="../css/style.css" >
 
         <title>MMX - Tudo ao seu alcance</title>
@@ -50,7 +51,7 @@
         <main class="content">
 
             <div>
-                <h2>Meus anúncios</h2>
+                <h2 class="title">Meus anúncios</h2>
             </div>
 
             <div id="no_results">
