@@ -6,37 +6,42 @@
     session_start();
 
     $userID = $_SESSION["userID"];
-    $adID = $_GET["id"];
 
     try {
       $sql = <<<SQL
-          SELECT *
-          FROM Anuncio
-          WHERE Codigo = ?
+          SELECT i.Mensagem, i.Contato, ad.Titulo, ad.Codigo
+          FROM Interesse i, Anuncio ad
+          WHERE i.CodAnuncio = ad.Codigo AND
+              ad.CodAnunciante = ?
           SQL;
   
       $stmt = $pdo->prepare($sql);
-      $stmt->execute([$adID]);
+      $stmt->execute([$userID]);
   
-      $data = $stmt->fetch();
+      $messages = [];
+
+      while($row = $stmt->fetch()) {
+        array_push($messages, $row);
+      }
+
     } catch(Exception $error) {
-      throw new Exception("Erro ao tentar acessar anúncio.");
+      throw new Exception("Erro ao tentar acessar mensagens.");
     }
 
-    try {
-      $sql = <<<SQL
-          SELECT Nome
-          FROM Anunciante
-          WHERE Codigo = ?
-          SQL;
+    // try {
+    //   $sql = <<<SQL
+    //       SELECT Nome
+    //       FROM Anunciante
+    //       WHERE Codigo = ?
+    //       SQL;
   
-      $stmt = $pdo->prepare($sql);
-      $stmt->execute([$data["CodAnunciante"]]);
+    //   $stmt = $pdo->prepare($sql);
+    //   $stmt->execute([$data["CodAnunciante"]]);
   
-      $advertiser = $stmt->fetch();
-    } catch(Exception $error) {
-      throw new Exception("Erro ao tentar acessar anúncio.");
-    }
+    //   $advertiser = $stmt->fetch();
+    // } catch(Exception $error) {
+    //   throw new Exception("Erro ao tentar acessar anúncio.");
+    // }
 ?>
 
 <!DOCTYPE html>
@@ -61,19 +66,14 @@
   </head>
   <body>
     <nav>
-      <?php
-          if(isset($userID)) {
-              echo "<a href='home.php'>HOME</a>";
-              echo "<a href='createAd.php'>NOVO ANÚNCIO</a>";
-              echo "<a href='myAds.php'>MEUS ANÚNCIOS</a>";
-              echo "<a href='messages.php' class='current_page'>MENSAGENS</a>";
-              echo "<a href='account.php'>MINHA CONTA</a>";
-              echo "<a href='../php/logout.php'>SAIR</a>";
-          } else {
-              echo "<a href='login.php'>LOGIN</a>";
-              echo "<a href='#' class='current_page'>NOVA CONTA</a>";
-          }
-      ?>
+
+      <a href="home.php">HOME</a>
+      <a href="createAd.php">NOVO ANÚNCIO</a>
+      <a href="myAds.php">MEUS ANÚNCIOS</a>
+      <a href="messages.php" class="current_page">MENSAGENS</a>
+      <a href="account.php">MINHA CONTA</a>
+      <a href="../php/logout.php">SAIR</a>
+  
     </nav>
 
     <header>
@@ -100,35 +100,41 @@
     <main>
       <h2>Mensagens de interesse</h2>
         
-      <div class="message">
-        <h3>Mensagem:</h3>
-        <p>teste</p>
+      <?php
 
-        <h3>Contato:</h3>
-        <p>teste</p>
-        
-        <h3>Produto:</h3>
-        <p>teste</p>
+        if(count($messages) == 0) {
+          
+          echo "<div id='no_messages'>";
+          echo "<img src='../assets/noMessages.svg' alt='Nenhuma mensagem' id='no_msg_img'>";
+          echo "<h5 id='no_msg_sub'>Nenhuma mensagem encontrada</h5>";
+          echo "</div>";
 
-        <div class="actions">
-          <button type="button">Deletar mensagem</button>
-        </div>
-      </div>
+        }
+        else {
+          foreach($messages as $message) {
+            echo "<div class='message'>";
+            
+            echo "<h3>Mensagem:</h3>";
+            echo "<p>{$message['Mensagem']}</p>";
+  
+            echo "<h3>Contato:</h3>";
+            echo "<p>{$message['Contato']}</p>";
+  
+            echo "<h3>Produto:</h3>";
+            echo "<p>";
+            echo "<a href='../pages/ad.php?id={$message['Codigo']}'>{$message['Titulo']}</a>";
+            echo "</p>";
+  
+            echo "<div class='actions'>";
+            echo "<button type='button'><div>Deletar mensagem</div></button>";
+            echo "</div>";
+  
+            echo "</div>";
+          }
+        }
+
+      ?>
       
-      <div class="message">
-        <h3>Mensagem:</h3>
-        <p>teste</p>
-
-        <h3>Contato:</h3>
-        <p>teste</p>
-        
-        <h3>Produto:</h3>
-        <p>teste</p>
-
-        <div class="actions">
-          <button type="button">Deletar mensagem</button>
-        </div>
-      </div>
     </main>
 
     <footer>

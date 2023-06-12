@@ -29,7 +29,7 @@
             <a href="home.php">HOME</a>
             <a href="createAd.php">NOVO ANÚNCIO</a>
             <a href="#" class="current_page">MEUS ANÚNCIOS</a>
-            <a href="">MENSAGENS</a>
+            <a href="messages.php">MENSAGENS</a>
             <a href="account.php">MINHA CONTA</a>
             <a href="../php/logout.php">SAIR</a>
         </nav>
