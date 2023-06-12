@@ -1,29 +1,23 @@
+const inputCep = document.getElementById("cep");
+inputCep.onkeyup = () => buscaEndereco(inputCep.value);
 
-function buscaEndereco(cep) {
-
+async function buscaEndereco(cep) {
+    //console.log("Buscando cep");
     if (cep.length != 9) return;
-    let form = document.querySelector("#formE");
+    let form = document.getElementById("createAdForm");
+    let endereco = "";
 
-    fetch("endereco.php?cep=" + cep)
-        .then(response => {
-            if (!response.ok) {
-         
-            throw new Error(response.status);
-            }
-        })
-        .then(endereco => {
-            // utiliza os dados para preencher o formulário
-            form.estado.value = endereco.estado;
-            form.bairro.value = endereco.bairro;
-            form.cidade.value = endereco.cidade;
-        })
-        .catch(error => {
-            form.reset();
-            console.error('Falha inesperada: ' + error);
-        });
-}
-
-window.onload = function () {
-    const inputCep = document.querySelector("#cep");
-    inputCep.onkeyup = () => buscaEndereco(inputCep.value);
+    try {
+        let response = await fetch("../php/address.php?cep=" + cep);
+        endereco = await response.json();
+    }
+    catch (e) {
+        form.reset();
+        console.log(e);
+    }
+    finally {
+        form.estado.value = endereco.estado;
+        form.bairro.value = endereco.bairro;
+        form.cidade.value = endereco.cidade;
+    }
 }
