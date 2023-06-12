@@ -191,7 +191,7 @@
   
         <h2 class="title">Registrar interesse</h2>
 
-        <form action="../php/createMessage.php">
+        <form action="../php/createMessage.php" method="post">
           <div>
             <input type="text" placeholder="Contato" name="contato">
           </div>
