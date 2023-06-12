@@ -10,15 +10,33 @@
 
     try {
       $sql = <<<SQL
-          SELECT *
-          FROM Anuncio
-          WHERE Codigo = ?
+          SELECT Titulo, Descricao, Preco, DataHora, CEP, Bairro, Cidade,
+              Estado, NomeArqFoto
+          FROM Anuncio, Foto
+          WHERE Codigo = ? AND
+              CodAnuncio = Codigo
           SQL;
   
       $stmt = $pdo->prepare($sql);
       $stmt->execute([$adID]);
   
-      $data = $stmt->fetch();
+      $row = $stmt->fetch();
+      $data = array(
+          "Titulo" => $row["Titulo"],
+          "Descricao" => $row["Descricao"],
+          "Preco" => $row["Preco"],
+          "DataHora" => $row["DataHora"],
+          "CEP" => $row["CEP"],
+          "Bairro" => $row["Bairro"],
+          "Cidade" => $row["Cidade"],
+          "Estado" => $row["Estado"],
+          "NomeArqFoto" => [$row["NomeArqFoto"]]
+      );
+
+      while($row = $stmt->fetch()) {
+          array_push($data["NomeArqFoto"], $row["NomeArqFoto"]);
+      }
+
     } catch(Exception $error) {
       throw new Exception("Erro ao tentar acessar anúncio.");
     }
@@ -72,7 +90,7 @@
               echo "<a href='../php/logout.php'>SAIR</a>";
           } else {
               echo "<a href='login.php'>LOGIN</a>";
-              echo "<a href='#' class='current_page'>NOVA CONTA</a>";
+              echo "<a href='account.php'>NOVA CONTA</a>";
           }
       ?>
     </nav>
@@ -107,7 +125,12 @@
             <svg xmlns:xlink="http://www.w3.org/1999/xlink" width="24" xmlns="http://www.w3.org/2000/svg" height="24" id="screenshot-89822874-17e9-8064-8002-5ca639eb6005" viewBox="0 0 24 24" style="-webkit-print-color-adjust: exact;" fill="none" version="1.1"><g id="shape-89822874-17e9-8064-8002-5ca639eb6005" width="24" height="24" rx="0" ry="0" style="fill: rgb(0, 0, 0);"><g id="shape-89822874-17e9-8064-8002-5ca639eb6007"><g class="fills" id="fills-89822874-17e9-8064-8002-5ca639eb6007"><path fill="rgba(0,0,0,1)" rx="0" ry="0" d="M10.828,12.001L15.778,16.950L14.364,18.365L8.000,12.001L14.364,5.637L15.778,7.051L10.828,12.001ZZ" style="fill: currentColor;"></g></g></g></svg>
           </button>
 
-          <img src="../assets/demo.jpg" alt="demo">
+          <?php
+            foreach($data["NomeArqFoto"] as $image) {
+              echo "<img src='../images/$image' alt='imagem'>";
+            }
+          ?>
+          <!-- <img src="../assets/demo.jpg" alt="demo"> -->
 
           <button type="button" id="next">
             <svg xmlns:xlink="http://www.w3.org/1999/xlink" width="24" xmlns="http://www.w3.org/2000/svg" height="24" id="screenshot-89822874-17e9-8064-8002-5ca639eb6001" viewBox="0 0 24 24" style="-webkit-print-color-adjust: exact;" fill="none" version="1.1"><g id="shape-89822874-17e9-8064-8002-5ca639eb6001" width="24" height="24" rx="0" ry="0" style="fill: rgb(0, 0, 0);"><g id="shape-89822874-17e9-8064-8002-5ca639eb6003"><g class="fills" id="fills-89822874-17e9-8064-8002-5ca639eb6003"><path rx="0" ry="0" d="M13.171,12.001L8.222,7.051L9.636,5.637L16.000,12.001L9.636,18.365L8.222,16.950L13.171,12.001ZZ" style="fill: currentColor;"></g></g></g></svg>
@@ -175,6 +198,17 @@
     </div>
 
     <script>
+      document.getElementById("previous").addEventListener('click', PreviousImage);
+      document.getElementById("next").addEventListener('click', NextImage);
+
+      const images = document.querySelectorAll(".carousel > img");
+      const numImages = images.length;
+      let currentImage = 0;
+
+      for (let i = 1; i < numImages; i++) {
+        images[i].style.display = 'none';
+      }
+
       const metadata = document.getElementById("metadata");
       const date = new Date('<?php echo $data["DataHora"] ?>');
       metadata.textContent = `${`${date.getDate()}`.padStart(2, "0")}/${`${date.getMonth() + 1}`.padStart(2, "0")}/${date.getFullYear()} às ${`${date.getHours()}`.padStart(2, "0")}h${`${date.getMinutes()}`.padStart(2, "0")}min por <?php echo $advertiser["Nome"] ?>`
@@ -188,6 +222,25 @@
       }
 
       priceTag.innerHTML = `R$ ${formattedIntValue.join("")},<span>${((price % 1) * 100).toFixed(0)}</span>`;
+
+      function NextImage() {
+        let next = (currentImage + 1) % numImages;
+        //console.log("next = ",next);
+
+        images[currentImage].style.display = 'none';
+        images[next].style.display = 'block';
+        currentImage = next;
+      }
+
+      function PreviousImage() {
+        let previous = (currentImage - 1) < 0 ? (currentImage - 1 + numImages) : currentImage - 1;
+
+        //console.log("previous = ",previous);
+
+        images[currentImage].style.display = 'none';
+        images[previous].style.display = 'block';
+        currentImage = previous;
+      }
     </script>
   </body>
 </html>
