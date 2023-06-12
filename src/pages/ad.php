@@ -200,6 +200,8 @@
             <textarea placeholder="Mensagem" name="mensagem"></textarea>          
           </div>
 
+          <input type="hidden" name="adId" id="adId" value="<?php echo $adID ?>">
+
           <button>Enviar</button>
         </form>
       </div>

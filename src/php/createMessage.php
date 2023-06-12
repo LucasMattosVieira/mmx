@@ -5,10 +5,9 @@
 
     $pdo = mySQLConnect();
 
-    $userID = $_SESSION["userID"];
-
     $contato = $_POST["contato"];
     $mensagem = $_POST["mensagem"];
+    $adId = $_POST["adId"];
 
     $sql = <<<SQL
         INSERT INTO Interesse (Contato, Mensagem, CodAnuncio)
@@ -16,7 +15,8 @@
     SQL;
 
     $stmt = $pdo->prepare($sql);
-    $stmt->execute([$contato, $mensagem, $userID]);
+    $stmt->execute([$contato, $mensagem, $adId]);
 
-    echo "Mensagem enviada com sucesso!";
+    header("Location: ../pages/ad.php?id=$adId&messageSent=true");
+    exit();
 ?>
