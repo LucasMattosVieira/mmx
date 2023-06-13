@@ -13,12 +13,8 @@
     $cidade = $_POST["cidade"] ?? "";
     $estado = $_POST["estado"] ?? "";
 
-    echo isset($_FILES["image"]);
-    echo count($_FILES["image"]);
-    echo count($_FILES);
-
     if(isset($_POST["title"])) {
-        if(count($_FILES)>0) {
+        if(!empty($_FILES["image"]["name"][0])) {
 
             $sqlF1 = <<<SQL
                 DELETE FROM Foto
