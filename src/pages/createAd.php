@@ -247,5 +247,11 @@
                 echo '<script src="../js/createAd.js"></script>';
             }
         ?>
+
+        <script>
+            if(<?php echo isset($adToEdit)?>) {
+                document.getElementById("estado").value = '<?php echo $ad["Estado"] ?>';
+            }
+        </script>
     </body>
 </html>
