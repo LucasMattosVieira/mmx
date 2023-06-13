@@ -212,6 +212,16 @@
                             <option value="TO">TO</option>
                         </select>
                     </div>
+
+                    <div>
+                        <input 
+                            type="text" 
+                            name="adID" 
+                            id="adID" 
+                            hidden
+                            <?php echo isset($adToEdit) ? "value={$adToEdit}" : "" ?>
+                        >
+                    </div>
                     
                     <?php
                         if(isset($adToEdit)){
