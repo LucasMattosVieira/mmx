@@ -150,6 +150,7 @@ nav > a {
 #loginForm,
 #signupForm,
 #createAdForm,
+#updateAdForm,
 #accountForm {
   width: 100%;
   max-width: 20rem;

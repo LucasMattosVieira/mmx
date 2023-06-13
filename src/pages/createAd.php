@@ -1,12 +1,32 @@
 <?php
+    require_once "../php/mySQLConnect.php";
+
+    $pdo = mysqlConnect();
+
     session_start();
 
     $id = $_SESSION["userID"];
+    $adToEdit = $_GET["adToEdit"];
 
     if(!isset($id)) {
         header("Location: login.php");
         exit();
     }
+
+    $sql = <<<SQL
+        SELECT Titulo, Descricao, Preco, CEP, Bairro, Cidade,
+            Estado, CodCategoria
+        FROM Anuncio
+        WHERE Codigo = ?
+        SQL;
+
+    if(isset($adToEdit)) {
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$adToEdit]);
+
+        $ad = $stmt->fetch();
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +79,9 @@
 
         <main>
             <div>
-                <h2>Novo Anúncio</h2>
+                <h2>
+                    <?php echo isset($adToEdit) ? "Editar Anúncio" : "Novo Anúncio" ?>
+                </h2>
 
                 <!-- <form action="../php/imagem.php" method="POST" enctype="multipart/form-data" id="formE">
 
@@ -70,7 +92,20 @@
                     
                 </form> -->
                 
-                <form action="../php/ad.php" method="post" id="createAdForm" enctype="multipart/form-data">
+                <?php
+                    if(isset($adToEdit)){
+                        echo <<<HTML
+                            <form action="../php/updateAd.php" method="post" id="updateAdForm" enctype="multipart/form-data">
+                            HTML;
+                    }
+                    else {
+                        echo <<<HTML
+                            <form action="../php/ad.php" method="post" id="createAdForm" enctype="multipart/form-data">
+                            HTML;
+                    }
+                ?>
+
+                
 
                     <div>
                         <label for="image" id="fileLabel">ADICIONAR IMAGEM</label>
@@ -78,11 +113,23 @@
                     </div>
 
                     <div>
-                    <input type="text" name="title" id="title" placeholder="Título" >
+                        <input 
+                            type="text" 
+                            name="title" 
+                            id="title" 
+                            placeholder="Título"
+                            <?php echo isset($adToEdit) ? "value={$ad['Titulo']}" : "" ?>
+                        >
                     </div>
         
                     <div>
-                    <input type="text" name="descr" id="descr" placeholder="Descrição" >
+                        <input 
+                            type="text" 
+                            name="descr" 
+                            id="descr" 
+                            placeholder="Descrição" 
+                            <?php echo isset($adToEdit) ? "value={$ad['Descricao']}" : "" ?>
+                        >
                     </div>
 
                     <div>
@@ -92,21 +139,45 @@
                     </div>
         
                     <div>
-                    <input type="number" name="price" id="price" placeholder="Preço" >
+                        <input 
+                            type="number" 
+                            name="price" 
+                            id="price" 
+                            placeholder="Preço" 
+                            <?php echo isset($adToEdit) ? "value={$ad['Preco']}" : "" ?>
+                        >
                     </div>
 
 
                     <div>
-                        <input type="text" name="cep" id="cep" placeholder="CEP" >
+                        <input 
+                            type="text" 
+                            name="cep" 
+                            id="cep" 
+                            placeholder="CEP"
+                            <?php echo isset($adToEdit) ? "value={$ad['CEP']}" : "" ?>
+                        >
                     </div>
 
 
                     <div>
-                        <input type="text" name="bairro" id="bairro" placeholder="Bairro" >
+                        <input 
+                            type="text" 
+                            name="bairro" 
+                            id="bairro" 
+                            placeholder="Bairro" 
+                            <?php echo isset($adToEdit) ? "value={$ad['Bairro']}" : "" ?>
+                        >
                     </div>
 
                     <div>
-                        <input type="text" name="cidade" id="cidade" placeholder="Cidade" >
+                        <input 
+                            type="text" 
+                            name="cidade" 
+                            id="cidade" 
+                            placeholder="Cidade"
+                            <?php echo isset($adToEdit) ? "value={$ad['Cidade']}" : "" ?>
+                        >
                     </div>
 
                     <div>
@@ -141,8 +212,15 @@
                             <option value="TO">TO</option>
                         </select>
                     </div>
-        
-                    <button type="submit">PUBLICAR</button>
+                    
+                    <?php
+                        if(isset($adToEdit)){
+                            echo '<button type="submit">ATUALIZAR</button>';
+                        }
+                        else {
+                            echo '<button type="submit">PUBLICAR</button>';
+                        }
+                    ?>
                 </form>
             </div>
         </main>
@@ -151,6 +229,13 @@
 
         <script src="../js/address.js"></script>
         <script src="../js/categories.js"></script>
-        <script src="../js/createAd.js"></script>
+        <?php
+            if(isset($adToEdit)){
+                echo '<script src="../js/updateAd.js"></script>';
+            }
+            else {
+                echo '<script src="../js/createAd.js"></script>';
+            }
+        ?>
     </body>
 </html>

@@ -10,8 +10,8 @@
 
     try {
       $sql = <<<SQL
-          SELECT Titulo, Descricao, Preco, DataHora, CEP, Bairro, Cidade,
-              Estado, NomeArqFoto
+          SELECT Codigo, Titulo, Descricao, Preco, DataHora, CEP, Bairro, Cidade,
+              Estado, NomeArqFoto, CodAnunciante
           FROM Anuncio, Foto
           WHERE Codigo = ? AND
               CodAnuncio = Codigo
@@ -22,6 +22,7 @@
   
       $row = $stmt->fetch();
       $data = array(
+          "Codigo" => $row["Codigo"],
           "Titulo" => $row["Titulo"],
           "Descricao" => $row["Descricao"],
           "Preco" => $row["Preco"],
@@ -30,7 +31,8 @@
           "Bairro" => $row["Bairro"],
           "Cidade" => $row["Cidade"],
           "Estado" => $row["Estado"],
-          "NomeArqFoto" => [$row["NomeArqFoto"]]
+          "NomeArqFoto" => [$row["NomeArqFoto"]],
+          "CodAnunciante" => $row["CodAnunciante"]
       );
 
       while($row = $stmt->fetch()) {
@@ -43,7 +45,7 @@
 
     try {
       $sql = <<<SQL
-          SELECT Nome, Codigo
+          SELECT Nome
           FROM Anunciante
           WHERE Codigo = ?
           SQL;
@@ -80,9 +82,9 @@
   </head>
   <body>
     <nav>
+      <a href='home.php'>HOME</a>
       <?php
           if(isset($userID)) {
-              echo "<a href='home.php'>HOME</a>";
               echo "<a href='createAd.php'>NOVO ANÚNCIO</a>";
               echo "<a href='myAds.php'>MEUS ANÚNCIOS</a>";
               echo "<a href='messages.php'>MENSAGENS</a>";
@@ -127,7 +129,12 @@
 
           <?php
             foreach($data["NomeArqFoto"] as $image) {
-              echo "<img src='../images/$image' alt='imagem'>";
+
+              echo <<<HTML
+                <img src="../images/{$image}" onerror="this.onerror=null; this.src='../assets/card.png'" alt="imagem">
+                HTML;
+
+              // echo "<img src='../images/$image' alt='imagem'>";
             }
           ?>
           <!-- <img src="../assets/demo.jpg" alt="demo"> -->
@@ -162,10 +169,12 @@
 
       <div class="actions">
         <?php 
-          if(isset($userID) && $userID == $advertiser["Codigo"]) {
+          if(isset($userID) && $userID == $data["CodAnunciante"]) {
             echo <<<HTML
               <button type="button">
-                <img src="../assets/edit.svg" alt="Ícone de edição">
+                <a href='createAd.php?adToEdit={$data["Codigo"]}'>
+                  <img src="../assets/edit.svg" alt="Ícone de edição">
+                </a>
               </button>
             HTML;
           } else if(isset($userID)) {
