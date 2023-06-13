@@ -133,7 +133,7 @@
                     </div>
 
                     <div>
-                        <select name="category" id="category">
+                        <select name="category" id="category" data-selected="<?php echo $ad["CodCategoria"] ?>">
                             <option value="" disabled selected>Categoria</option>
                         </select>
                     </div>

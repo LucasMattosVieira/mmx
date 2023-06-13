@@ -17,4 +17,10 @@ async function GetCategories() {
         option.innerHTML = results[i]["name"];
         categorySelect.appendChild(option);
     }
+
+    if(categorySelect.dataset.selected.length > 0) {
+        categorySelect.value = categorySelect.dataset.selected
+        categorySelect.removeAttribute("data-selected")
+    }
+    
 }
